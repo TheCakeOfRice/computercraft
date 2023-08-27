@@ -1,0 +1,4 @@
+-- get list
+-- blit / while true wait for input
+-- if click
+-- if scroll

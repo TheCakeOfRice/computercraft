@@ -1,0 +1,5 @@
+-- get inventory
+-- send to player
+-- import from chest
+-- find item in blob storage
+-- deposit last row
