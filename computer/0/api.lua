@@ -1,1 +1,0 @@
--- rednet code with calls from funcs.lua

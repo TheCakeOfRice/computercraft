@@ -16,9 +16,9 @@ function getInventory()
     for _, chest in ipairs(chests) do
         for _, item in pairs(chest.list()) do
             if inventory[item.name] then
-                inventory[item.name] = inventory[item.name] + item.count
+                inventory[item.name].count = inventory[item.name].count + item.count
             else
-                inventory[item.name] = item.count
+                inventory[item.name] = { count=item.count, displayName=item.displayName }
             end
         end
     end
@@ -74,13 +74,16 @@ function deposit()
 end
 
 -- returns bool
-function depositPlayersLastRow()
+function depositLastRow()
     -- clear deposit chest first
     if deposit() then
         -- move items from player to deposit chest
         local invMgr = peripheral.wrap(vars.INVENTORY_MANAGER)
-        for i=28, 36 do
-            invMgr.removeItemFromPlayer("left", 64, i)
+        for _, item in pairs(invMgr.getItems()) do
+            print(item.displayName .. " : " .. tostring(item.slot))
+            if item.slot >= 27 and item.slot <= 35 then
+                invMgr.removeItemFromPlayerNBT("left", item.count, nil, { fromSlot=item.slot })
+            end
         end
         -- deposit from deposit chest
         return deposit()
