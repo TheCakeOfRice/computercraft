@@ -33,3 +33,44 @@ function stringifyCount(count)
     end
     return str
 end
+
+function search(inv, searchTerm)
+    -- parsing search terms
+    local modTerms = {}
+    local itemTerms = {}
+    for word in string.gmatch(string.lower(searchTerm), "%g+") do
+        -- mod search prefixed by '@'
+        if word[1] == "@" and #word > 1 then
+            table.insert(modTerms, string.sub(word, 2, #word))
+
+        -- item search has no prefix
+        else
+            table.insert(itemTerms, word)
+        end
+    end
+
+    newInv = {}
+    for name, item in pairs(inv) do
+        -- checking for mod match
+        local modMatch = true
+        for _, modTerm in ipairs(modTerms) do
+            if not string.find(string.lower(item.mod), modTerm) then
+                modMatch = false
+            end
+        end
+
+        -- checking for item match
+        local itemMatch = true
+        for _, itemTerm in ipairs(itemTerms) do
+            if not string.find(string.lower(item.displayName), itemTerm) then
+                itemMatch = false
+            end
+        end
+
+        if modMatch and itemMatch then
+            newInv[name] = item
+        end
+    end
+
+    return newInv
+end

@@ -1,28 +1,56 @@
 os.loadAPI("funcs.lua")
 
-function refresh(inv)
+function draw(inv, y)
     term.clear()
-    term.setCursorPos(1, 1)
-    local y = 1
-    for name, item in pairs(inv) do
-        if y < 20 then
+    for i, item in ipairs(inv) do
+        -- only write up to 19 lines
+        if i >= y and i < y + 19 then
+            -- make sure line is a string of length 26
             local line = funcs.stringifyCount(item.count) .. " / "
             if #item.displayName < 20 then
                 line = line .. item.displayName
             else
                 line = line .. string.sub(item.displayName, 1, 19)
             end
+
+            -- write line to terminal at relative position
+            term.setCursorPos(1, i - y + 1)
             term.write(line)
-            y = y + 1
-            term.setCursorPos(1, y)
         end
     end
+
+    -- write buttons
     term.setCursorPos(1, 20)
     term.blit(" Search ", colors.white, colors.blue)
     term.blit(" Deposit Last Row ", colors.white, colors.red)
 end
 
--- get list
--- blit / while true wait for input
--- if click
--- if scroll
+function drawSuccess()
+    term.setCursorPos(1, 20)
+    term.clearLine()
+    term.write("       ")
+    term.blit(" Success! ", colors.white, colors.green)
+end
+
+function drawFailed()
+    term.setCursorPos(1, 20)
+    term.clearLine()
+    term.write("       ")
+    term.blit(" Failed ", colors.white, colors.red)
+end
+
+function drawQuantityPrompt()
+    term.setCursorPos(1, 20)
+    term.clearLine()
+    term.write("      ")
+    term.blit(" Quantity:", colors.white, colors.gray)
+    term.write(" ")
+end
+
+function drawSearchPrompt()
+    term.setCursorPos(1, 20)
+    term.clearLine()
+    term.write("       ")
+    term.blit(" Search:", colors.white, colors.blue)
+    term.write(" ")
+end

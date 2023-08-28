@@ -18,10 +18,12 @@ function getInventory()
             if inventory[item.name] then
                 inventory[item.name].count = inventory[item.name].count + item.count
             else
-                inventory[item.name] = { count=item.count, displayName=item.displayName }
+                local modName = string.match(item.name, "(.+):")
+                inventory[item.name] = {name=item.name, mod=modName, count=item.count, displayName=item.displayName }
             end
         end
     end
+    -- sort me by count
     return inventory
 end
 
