@@ -12,18 +12,23 @@ end
 -- returns a table of name : count values
 function getInventory()
     local inventory = {}
+    local indexMap = {}
     local chests = { peripheral.find("minecraft:chest", ignoreNamedChests) }
     for _, chest in ipairs(chests) do
         for _, item in pairs(chest.list()) do
-            if inventory[item.name] then
-                inventory[item.name].count = inventory[item.name].count + item.count
+            if indexMap[item.name] then
+                inventory[indexMap[item.name]].count = inventory[indexMap[item.name]].count + item.count
             else
                 local modName = string.match(item.name, "(.+):")
-                inventory[item.name] = {name=item.name, mod=modName, count=item.count, displayName=item.displayName }
+                local displayName = string.match(item.name, ".+:(.+)")
+                inventory[#inventory + 1] = { name=item.name, count=item.count, mod=modName, displayName=displayName }
+                indexMap[item.name] = #inventory
             end
         end
     end
-    -- sort me by count
+
+    -- sort by count
+    table.sort(inventory, function (item1, item2) return item1.count > item2.count end )
     return inventory
 end
 
@@ -82,7 +87,6 @@ function depositLastRow()
         -- move items from player to deposit chest
         local invMgr = peripheral.wrap(vars.INVENTORY_MANAGER)
         for _, item in pairs(invMgr.getItems()) do
-            print(item.displayName .. " : " .. tostring(item.slot))
             if item.slot >= 27 and item.slot <= 35 then
                 invMgr.removeItemFromPlayerNBT("left", item.count, nil, { fromSlot=item.slot })
             end

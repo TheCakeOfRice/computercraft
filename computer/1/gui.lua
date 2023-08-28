@@ -21,36 +21,36 @@ function draw(inv, y)
 
     -- write buttons
     term.setCursorPos(1, 20)
-    term.blit(" Search ", colors.white, colors.blue)
-    term.blit(" Deposit Last Row ", colors.white, colors.red)
+    term.blit(" Search ", "00000000", "bbbbbbbb")
+    term.blit(" Deposit Last Row ", "000000000000000000", "eeeeeeeeeeeeeeeeee")
 end
 
 function drawSuccess()
     term.setCursorPos(1, 20)
     term.clearLine()
     term.write("       ")
-    term.blit(" Success! ", colors.white, colors.green)
+    term.blit(" Success! ", "0000000000", "dddddddddd")
 end
 
 function drawFailed()
     term.setCursorPos(1, 20)
     term.clearLine()
     term.write("       ")
-    term.blit(" Failed ", colors.white, colors.red)
+    term.blit(" Failed ", "00000000", "eeeeeeee")
 end
 
 function drawQuantityPrompt()
     term.setCursorPos(1, 20)
     term.clearLine()
-    term.write("      ")
-    term.blit(" Quantity:", colors.white, colors.gray)
+    term.write(" ")
+    term.blit(" Quantity:", "0000000000", "8888888888")
     term.write(" ")
 end
 
 function drawSearchPrompt()
     term.setCursorPos(1, 20)
     term.clearLine()
-    term.write("       ")
-    term.blit(" Search:", colors.white, colors.blue)
+    term.write(" ")
+    term.blit(" Search:", "00000000", "bbbbbbbb")
     term.write(" ")
 end

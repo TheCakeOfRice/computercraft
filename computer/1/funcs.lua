@@ -35,22 +35,23 @@ function stringifyCount(count)
 end
 
 function search(inv, searchTerm)
+    print("called search")
     -- parsing search terms
     local modTerms = {}
     local itemTerms = {}
-    for word in string.gmatch(string.lower(searchTerm), "%g+") do
+    for word in string.gmatch(string.lower(searchTerm), "[^%s]+") do
         -- mod search prefixed by '@'
-        if word[1] == "@" and #word > 1 then
-            table.insert(modTerms, string.sub(word, 2, #word))
+        if string.sub(word, 1, 1) == "@" and #word > 1 then
+            modTerms[#modTerms + 1] = string.sub(word, 2, #word)
 
         -- item search has no prefix
         else
-            table.insert(itemTerms, word)
+            itemTerms[#itemTerms + 1] = word
         end
     end
 
     newInv = {}
-    for name, item in pairs(inv) do
+    for _, item in ipairs(inv) do
         -- checking for mod match
         local modMatch = true
         for _, modTerm in ipairs(modTerms) do
@@ -68,7 +69,7 @@ function search(inv, searchTerm)
         end
 
         if modMatch and itemMatch then
-            newInv[name] = item
+            newInv[#newInv + 1] = item
         end
     end
 

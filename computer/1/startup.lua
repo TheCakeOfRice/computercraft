@@ -15,7 +15,8 @@ while true do
             if x <= 8 then
                 gui.drawSearchPrompt()
                 local searchTerm = read()
-                inv = funcs.search(searchTerm)
+                inv = funcs.inventory()
+                inv = funcs.search(inv, searchTerm)
                 scroll_y = 1
 
             -- deposit last row was clicked
@@ -32,19 +33,21 @@ while true do
         
         -- an item was clicked
         else
-            -- get user input for quantity
-            gui.drawQuantityPrompt()
-            local count = read()
+            if inv[scroll_y + y - 1] then
+                -- get user input for quantity
+                gui.drawQuantityPrompt()
+                local count = tonumber(read())
 
-            -- request items
-            if funcs.get(inv[scroll_y + y - 1].name, count) then
-                gui.drawSuccess()
-            else
-                gui.drawFailed()
+                -- request items
+                if funcs.get(inv[scroll_y + y - 1].name, count) then
+                    gui.drawSuccess()
+                else
+                    gui.drawFailed()
+                end
+
+                -- update inventory
+                inv = funcs.inventory()
             end
-
-            -- update inventory
-            inv = funcs.inventory()
         end
 
         -- re-draw
@@ -53,7 +56,7 @@ while true do
     elseif event == "mouse_scroll" then
         -- update scroll variable
         scroll_y = scroll_y + dir
-        scroll_y = math.max(scroll_y, #inv - 20)
+        scroll_y = math.max(scroll_y, #inv - 18)
         scroll_y = math.min(scroll_y, 1)
 
         -- re-draw
