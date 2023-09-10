@@ -1,7 +1,7 @@
 os.loadAPI("vars.lua")
 os.loadAPI("funcs.lua")
 
-rednet.open("right")
+rednet.open(vars.MODEM_SIDE)
 print("Listening for rednet messages...")
 while true do
     local cpu, message = rednet.receive(nil, 5)
