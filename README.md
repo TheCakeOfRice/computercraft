@@ -6,9 +6,9 @@ To use the code, you must have vanilla chests connected to StorageCPU using wire
 
 ## Current pastebins (9/10/23):
 ### StorageCPU
-* vars.lua - https://pastebin.com/zVQSpqsr
+* vars.lua - https://pastebin.com/z0JmLqLA
 * funcs.lua - https://pastebin.com/2id6xpGG
-* startup.lua - https://pastebin.com/VM8i5rYJ
+* startup.lua - https://pastebin.com/cbY569Js
 
 ### iPad
 * vars.lua - https://pastebin.com/h7d4E4hJ
