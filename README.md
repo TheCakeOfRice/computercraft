@@ -13,5 +13,5 @@ To use the code, you must have vanilla chests connected to StorageCPU using wire
 ### iPad
 * vars.lua - https://pastebin.com/h7d4E4hJ
 * funcs.lua - https://pastebin.com/AC2y8awj
-* startup.lua - https://pastebin.com/0pU0iU2v
+* startup.lua - https://pastebin.com/S6EKsjpH
 * gui.lua - https://pastebin.com/YJZDEpTe
