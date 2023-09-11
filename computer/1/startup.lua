@@ -56,8 +56,8 @@ while true do
     elseif event == "mouse_scroll" then
         -- update scroll variable
         scroll_y = scroll_y + dir
-        scroll_y = math.max(scroll_y, #inv - 18)
-        scroll_y = math.min(scroll_y, 1)
+        scroll_y = math.min(scroll_y, #inv - 18)
+        scroll_y = math.max(scroll_y, 1)
 
         -- re-draw
         gui.draw(inv, scroll_y)
