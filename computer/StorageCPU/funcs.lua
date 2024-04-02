@@ -13,7 +13,7 @@ end
 function getInventory()
     local inventory = {}
     local indexMap = {}
-    local chests = { peripheral.find("minecraft:chest", ignoreNamedChests) }
+    local chests = { peripheral.find("minecraft:chest", ignoreNamedChests), peripheral.find("functionalstorage:spruce_1") }
     for _, chest in ipairs(chests) do
         for _, item in pairs(chest.list()) do
             if indexMap[item.name] then
@@ -37,7 +37,7 @@ function sendToPlayer(itemName, itemCount)
     -- move items to withdrawal chest
     local numMoved = 0 
     local leftToMove = itemCount
-    local chests = { peripheral.find("minecraft:chest", ignoreNamedChests) }
+    local chests = { peripheral.find("minecraft:chest", ignoreNamedChests), peripheral.find("functionalstorage:spruce_1") }
     for _, chest in ipairs(chests) do
         if leftToMove > 0 then
             for slot, item in pairs(chest.list()) do
@@ -62,7 +62,7 @@ end
 -- import from deposit chest, returns bool
 function deposit()
     depositChest = peripheral.wrap(vars.DEPOSIT_CHEST)
-    local chests = { peripheral.find("minecraft:chest", ignoreNamedChests) }
+    local chests = { peripheral.find("minecraft:chest", ignoreNamedChests), peripheral.find("functionalstorage:spruce_1") }
     for slot, item in pairs(depositChest.list()) do
         local numMoved = 0 
         local leftToMove = item.count
