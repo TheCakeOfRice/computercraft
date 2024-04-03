@@ -2,18 +2,36 @@ os.loadAPI("vars.lua")
 
 -- filter function
 function ignoreNamedChests(name, _)
-    if name == vars.DEPOSIT_CHEST or name == vars.WITHDRAWAL_CHEST then
-        return false
-    else
-        return true
+    for _, dirty in pairs(vars.BLACKLIST) do
+        if name == dirty then
+            return false
+        end
     end
+    return true
+end
+
+-- concatenates tables
+function concat(t1, t2)
+    for i=1, #t2 do
+        t1[#t1 + 1] = t2[i]
+    end
+    return t1
+end
+
+-- gets all chests as a list of tables
+function getChests()
+    local chests = {}
+    for _, type in pairs(vars.CHEST_TYPES) do
+        chests = concat(chests, { peripheral.find(type, ignoreNamedChests) })
+    end
+    return chests
 end
 
 -- returns a table of name : count values
 function getInventory()
     local inventory = {}
     local indexMap = {}
-    local chests = { peripheral.find("minecraft:chest", ignoreNamedChests), peripheral.find("functionalstorage:spruce_1") }
+    local chests = getChests()
     for _, chest in ipairs(chests) do
         for _, item in pairs(chest.list()) do
             if indexMap[item.name] then
@@ -37,7 +55,7 @@ function sendToPlayer(itemName, itemCount)
     -- move items to withdrawal chest
     local numMoved = 0 
     local leftToMove = itemCount
-    local chests = { peripheral.find("minecraft:chest", ignoreNamedChests), peripheral.find("functionalstorage:spruce_1") }
+    local chests = getChests()
     for _, chest in ipairs(chests) do
         if leftToMove > 0 then
             for slot, item in pairs(chest.list()) do
@@ -62,7 +80,7 @@ end
 -- import from deposit chest, returns bool
 function deposit()
     depositChest = peripheral.wrap(vars.DEPOSIT_CHEST)
-    local chests = { peripheral.find("minecraft:chest", ignoreNamedChests), peripheral.find("functionalstorage:spruce_1") }
+    local chests = getChests()
     for slot, item in pairs(depositChest.list()) do
         local numMoved = 0 
         local leftToMove = item.count
