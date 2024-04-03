@@ -4,7 +4,7 @@ os.loadAPI("funcs.lua")
 rednet.open(vars.MODEM_SIDE)
 print("Listening for rednet messages...")
 while true do
-    local cpu, message = rednet.receive(nil, 5)
+    local cpu, message = rednet.receive(nil, 3)
     if message then
         if message.method == "inventory" then
             print("Received 'inventory'.")
