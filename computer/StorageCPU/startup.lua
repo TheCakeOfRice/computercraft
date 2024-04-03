@@ -13,6 +13,9 @@ while true do
         elseif message.method == "get" then
             print("Received 'get'.")
             rednet.send(cpu, funcs.sendToPlayer(message.item, message.count))
+        elseif message.method == "export" then
+            print("Received 'export'.")
+            rednet.send(cpu, funcs.export(message.target, message.item, message.count))
         elseif message.method == "depositLastRow" then
             print("Received 'depositLastRow'.")
             rednet.send(cpu, funcs.depositLastRow())

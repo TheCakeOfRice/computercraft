@@ -51,8 +51,7 @@ function getInventory()
 end
 
 -- returns bool
-function sendToPlayer(itemName, itemCount)
-    -- move items to withdrawal chest
+local function withdraw(itemName, itemCount)
     local numMoved = 0 
     local leftToMove = itemCount
     local chests = getChests()
@@ -68,12 +67,64 @@ function sendToPlayer(itemName, itemCount)
             end
         end
     end
+    if numMoved == itemCount then
+        return true
+    else
+        print("funcs.withdraw: Only withdrew " .. tostring(numMoved) .. " of " .. tostring(itemCount) .. " items.")
+        return false
+    end
+end
+
+-- returns bool
+function sendToPlayer(itemName, itemCount)
+    -- move items to withdrawal chest
+    if not withdraw(itemName, itemCount) then
+        print("funcs.sendToPlayer: Failed withdrawing items!")
+        return false
+    end
+
     -- add items to player
     local invMgr = peripheral.wrap(vars.INVENTORY_MANAGER)
     if not invMgr then
+        print("funcs.sendToPlayer: Inventory manager could not be found!")
         return false
     else
-        return invMgr.addItemToPlayer("right", itemCount, nil, itemName) == itemCount
+        local numMoved = invMgr.addItemToPlayer("right", itemCount, nil, itemName)
+        if numMoved == itemCount then
+            return true
+        else
+            print("funcs.sendToPlayer: Only sent " .. tostring(numMoved) .. " of " .. tostring(itemCount) .. " items.")
+            return false
+        end
+    end
+end
+
+-- returns bool
+function export(target, itemName, itemCount)
+    -- move items to withdrawal chest
+    if not withdraw(itemName, itemCount) then
+        print("funcs.export: Failed withdrawing items!")
+        return false
+    end
+
+    local numMoved = 0 
+    local leftToMove = itemCount
+
+    -- add items to target
+    local wChest = peripheral.wrap(vars.WITHDRAWAL_CHEST)
+    for slot, item in pairs(wChest.list()) do
+        if leftToMove > 0 then
+            if item.name == itemName then
+                numMoved = numMoved + wChest.pushItems(target, slot, leftToMove)
+                leftToMove = leftToMove - numMoved
+            end
+        end
+    end
+    if numMoved == itemCount then
+        return true
+    else
+        print("funcs.export: Only exported " .. tostring(numMoved) .. " of " .. tostring(itemCount) .. " items.")
+        return false
     end
 end
 
