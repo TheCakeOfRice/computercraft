@@ -1,7 +1,8 @@
 os.loadAPI("vars.lua")
 os.loadAPI("funcs.lua")
 
-rednet.open(vars.MODEM_SIDE)
+rednet.open(vars.WIRED_MODEM_SIDE)
+rednet.open(vars.ENDER_MODEM_SIDE)
 print("Listening for rednet messages...")
 while true do
     local cpu, message = rednet.receive(nil, 3)
@@ -11,21 +12,19 @@ while true do
             local inv = funcs.getInventory()
             rednet.send(cpu, inv)
         elseif message.method == "get" then
-            print("Received 'get'.")
+            print("Received 'get "..message.item.." "..tostring(message.count).."'.")
             rednet.send(cpu, funcs.sendToPlayer(message.item, message.count))
         elseif message.method == "export" then
-            print("Received 'export'.")
+            print("Received 'export "..message.item.." "..tostring(message.count).."'.")
             rednet.send(cpu, funcs.export(message.target, message.item, message.count))
         elseif message.method == "depositLastRow" then
             print("Received 'depositLastRow'.")
             rednet.send(cpu, funcs.depositLastRow())
         end
-        print("Listening for rednet messages...")
     end
 
     if redstone.getAnalogInput("top") > 0 then
         print("Depositing items...")
         funcs.deposit()
-        print("Listening for rednet messages...")
     end
 end
