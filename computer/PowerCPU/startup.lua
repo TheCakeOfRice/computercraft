@@ -1,5 +1,16 @@
 os.loadAPI("exports.lua")
+os.loadAPI("vars.lua")
 
-rednet.open("bottom")
+rednet.open(vars.WIRED_MODEM_SIDE)
 
-print(exports.bamboo(5))
+local generator = peripheral.wrap(vars.GENERATOR)
+if not generator then
+    print("Generator could not be found!")
+end
+
+while true do
+    if #generator.list() == 0 then
+        exports.bamboo(64)
+    end
+    os.sleep(10)
+end
