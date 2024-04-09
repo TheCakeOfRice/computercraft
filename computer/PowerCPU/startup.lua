@@ -10,12 +10,14 @@ end
 local generators = {}
 for _, name in pairs(peripheral.getNames()) do
     if string.startswith(name, vars.GENERATOR_TYPE) then
+        print("Found generator "..name)
         local generator = peripheral.wrap(name)
         generator.name = name
         table.insert(generators, generator)
     end
 end
 
+print("Starting main loop...")
 while true do
     for _, generator in pairs(generators) do
         if #generator.list() == 0 then
