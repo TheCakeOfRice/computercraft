@@ -20,6 +20,9 @@ while true do
         elseif message.method == "depositLastRow" then
             print("Received 'depositLastRow'.")
             rednet.send(cpu, funcs.depositLastRow())
+        elseif message.method == "deposit" then
+            print("Received 'deposit'.")
+            rednet.send(cpu, funcs.deposit())
         end
     end
 
