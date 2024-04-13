@@ -1,7 +1,7 @@
 import requests
 import os
 
-readme = requests.get(f'https://api.github.com/repos/TheCakeOfRice/computercraft/contents/ci_pipeline/pastebins.txt?ref="mulungus-server"')
+readme = requests.get(f"https://api.github.com/repos/TheCakeOfRice/computercraft/contents/ci_pipeline/pastebins.txt?ref=mulungus-server")
 print(readme.text)
 # Loops through all .lua files
 for cpu_folder in os.listdir("./computers"):
