@@ -1,7 +1,4 @@
-import requests
 import os
-import base64
-from dotenv import dotenv_values
 import json
 from pygit2 import Repository
 
@@ -18,6 +15,7 @@ for cpu_name in os.listdir("./computers"):
     file_map[cpu_name] = []
     for filename in os.listdir(f"./computers/{cpu_name}"):
         if filename.endswith(".lua"):
+            print(f"Found .lua file at ./computers/{cpu_name}/{filename}?ref={branch_name}")
             file_map[cpu_name].append(f"{base_url}/computers/{cpu_name}/{filename}?ref={branch_name}")
 
 # Publish .json of map of file to url
@@ -25,6 +23,8 @@ with open("ci_pipeline/file_map.json", "w") as outfile:
     json.dump(file_map, outfile, indent=4)
 
 ### USAGE
+# import requests
+# import base64
 # pastebins = requests.get(f"https://api.github.com/repos/TheCakeOfRice/computercraft/contents/ci_pipeline/file_map.json?ref=mulungus-server")
 # print(pastebins.text)
 # content = base64.b64decode(pastebins.json()["content"]).decode('utf-8')
@@ -37,6 +37,7 @@ with open("ci_pipeline/file_map.json", "w") as outfile:
 
 # print("Pastebin is limited to 20 posts per 24 hrs per user!  Find a way to decode base64 directly from github or else deal with limitations of pastebin.")
 
+# from dotenv import dotenv_values
 # env_vars = dotenv_values("ci_pipeline/.env")
 # pastebin_api_key = env_vars.get("PASTEBIN_API_KEY")
 # if not pastebin_api_key: raise Exception("api key failed to read from .env")
