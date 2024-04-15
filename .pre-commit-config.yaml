@@ -1,0 +1,9 @@
+repos:
+ # Update file_map.json as part of CI pipeline
+ - repo: local
+   hooks:
+    - id: update_file_map
+      name: script_I_want_to_run
+      entry: python ./ci_pipeline/ci.py
+      language: python
+      types: [python]
