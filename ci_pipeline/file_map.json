@@ -1,0 +1,23 @@
+{
+    "iPad": [
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/funcs.lua?ref=mulungus-server",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gui.lua?ref=mulungus-server",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/startup.lua?ref=mulungus-server",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/vars.lua?ref=mulungus-server"
+    ],
+    "MacGyver": [
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/recipes.lua?ref=mulungus-server",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/startup.lua?ref=mulungus-server",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/vars.lua?ref=mulungus-server"
+    ],
+    "PowerCPU": [
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/funcs.lua?ref=mulungus-server",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/startup.lua?ref=mulungus-server",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/vars.lua?ref=mulungus-server"
+    ],
+    "StorageCPU": [
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/funcs.lua?ref=mulungus-server",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/startup.lua?ref=mulungus-server",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/vars.lua?ref=mulungus-server"
+    ]
+}
