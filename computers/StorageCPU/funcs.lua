@@ -100,7 +100,7 @@ function sendToPlayer(itemName, itemCount)
 end
 
 -- returns bool
-function export(target, itemName, itemCount)
+function export(target, itemName, itemCount, toSlot)
     -- move items to withdrawal chest
     if not withdraw(itemName, itemCount) then
         print("funcs.export: Failed withdrawing items!")
@@ -115,7 +115,7 @@ function export(target, itemName, itemCount)
     for slot, item in pairs(wChest.list()) do
         if leftToMove > 0 then
             if item.name == itemName then
-                numMoved = numMoved + wChest.pushItems(target, slot, leftToMove)
+                numMoved = numMoved + wChest.pushItems(target, slot, leftToMove, toSlot)
                 leftToMove = leftToMove - numMoved
             end
         end
