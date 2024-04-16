@@ -1,23 +1,11 @@
-os.loadAPI("vars.lua")
-os.loadAPI("recipes.lua")
-
 rednet.open("bottom")
-for i=1, 9 do
-    if recipes.CHEST[i] then
-        rednet.send(vars.STORAGE_CPU, { method="export", item=recipes.CHEST[i], count=1, target=vars.CRAFTING_CHEST, toSlot=i })
-        local _, message = rednet.receive(nil, 5)
-        print(tostring(i)..": "..tostring(message))
-
-        if i < 4 then
-            turtle.select(i)
-        elseif i < 7 then
-            turtle.select(i + 1)
-        else
-            turtle.select(i + 2)
+while true do
+    local _, message = rednet.receive(nil, 10)
+    if message then
+        if message.method == "gitPull" then
+            print("Pulling from GitHub...")
+            local pulled = message.updateFiles("MacGyver", message.fileMap)
+            if pulled then os.reboot() end
         end
-        turtle.suck()
     end
 end
-
-turtle.select(1)
-turtle.craft()

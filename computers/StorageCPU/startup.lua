@@ -23,6 +23,15 @@ while true do
         elseif message.method == "deposit" then
             print("Received 'deposit'.")
             rednet.send(cpu, funcs.deposit())
+        elseif message.method == "gitPull" then
+            print("Pulling from GitHub...")
+            local pulled = message.updateFiles("StorageCPU", message.fileMap)
+            local cpus = funcs.concat({ peripheral.find("turtle") }, { peripheral.find("computer") })
+            for _, cpu in pairs(cpus) do
+                rednet.send(cpu.getID(), message)
+            end
+            rednet.send(cpu, true)
+            if pulled then os.reboot() end
         end
     end
 

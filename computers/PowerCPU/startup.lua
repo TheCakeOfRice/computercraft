@@ -43,5 +43,13 @@ while true do
     if needsDeposit then
         funcs.callDeposit()
     end
-    os.sleep(10)
+
+    local _, message = rednet.receive(nil, 10)
+    if message then
+        if message.method == "gitPull" then
+            print("Pulling from GitHub...")
+            local pulled = message.updateFiles("PowerCPU", message.fileMap)
+            if pulled then os.reboot() end
+        end
+    end
 end
