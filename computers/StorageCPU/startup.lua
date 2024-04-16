@@ -1,5 +1,6 @@
-os.loadAPI("vars.lua")
-os.loadAPI("funcs.lua")
+local funcs = require("funcs.lua")
+local vars = require("vars.lua")
+local cd = require("_cd_pipeline/_cd.lua")
 
 rednet.open(vars.WIRED_MODEM_SIDE)
 rednet.open(vars.ENDER_MODEM_SIDE)
@@ -25,7 +26,7 @@ while true do
             rednet.send(cpu, funcs.deposit())
         elseif message.method == "gitPull" then
             print("Pulling from GitHub...")
-            local pulled = message.updateFiles("StorageCPU", message.fileMap)
+            local pulled = cd.updateFiles("StorageCPU", message.fileMap)
             local cpus = funcs.concat({ peripheral.find("turtle") }, { peripheral.find("computer") })
             for _, cpu in pairs(cpus) do
                 rednet.send(cpu.getID(), message)

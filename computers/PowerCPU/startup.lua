@@ -1,5 +1,6 @@
-os.loadAPI("funcs.lua")
-os.loadAPI("vars.lua")
+local funcs = require("funcs.lua")
+local vars = require("vars.lua")
+local cd = require("_cd_pipeline/_cd.lua")
 
 rednet.open(vars.WIRED_MODEM_SIDE)
 
@@ -48,7 +49,7 @@ while true do
     if message then
         if message.method == "gitPull" then
             print("Pulling from GitHub...")
-            local pulled = message.updateFiles("PowerCPU", message.fileMap)
+            local pulled = cd.updateFiles("PowerCPU", message.fileMap)
             if pulled then os.reboot() end
         end
     end
