@@ -1,5 +1,5 @@
-os.loadAPI("vars.lua")
-os.loadAPI("cd.lua")
+local vars = require("vars.lua")
+local cd = require("_cd_pipeline/_cd.lua")
 
 term.clear()
 

@@ -1,4 +1,5 @@
 import os
+import shutil
 import json
 from pygit2 import Repository
 
@@ -9,18 +10,30 @@ from pygit2 import Repository
 base_url = "https://api.github.com/repos/TheCakeOfRice/computercraft/contents"
 branch_name = Repository('.').head.shorthand
 
-# Loops through all .lua files and constructs github api urls
 file_map = {}
 for cpu_name in os.listdir("./computers"):
+    # Init list for cpu_name
     file_map[cpu_name] = []
+
+    # Propagate cd_pipeline to all computers
+    try:
+        os.mkdir(f"./computers/{cpu_name}/_cd_pipeline")
+    except FileExistsError:
+        pass
+
+    for filename in os.listdir("./cd_pipeline"):
+        if filename.endswith(".lua"):
+            shutil.copy(f"./cd_pipeline/{filename}", f"./computers/{cpu_name}/_cd_pipeline/_{filename}")
+            print(f"Found .lua file at ./computers/{cpu_name}/_cd_pipeline/_{filename}?ref={branch_name}")
+
+            # Construct github api urls for .lua files in _cd_pipeline
+            file_map[cpu_name].append(f"{base_url}/computers/{cpu_name}/_cd_pipeline/_{filename}?ref={branch_name}")
+
+    # Loop through all other .lua files and construct github api urls
     for filename in os.listdir(f"./computers/{cpu_name}"):
         if filename.endswith(".lua"):
             print(f"Found .lua file at ./computers/{cpu_name}/{filename}?ref={branch_name}")
             file_map[cpu_name].append(f"{base_url}/computers/{cpu_name}/{filename}?ref={branch_name}")
-        elif filename == "cd_pipeline":
-            for cd_filename in os.listdir(f"./computers/{cpu_name}/cd_pipeline"):
-                print(f"Found .lua file at ./computers/{cpu_name}/cd_pipeline/{cd_filename}?ref={branch_name}")
-                file_map[cpu_name].append(f"{base_url}/computers/{cpu_name}/cd_pipeline/{cd_filename}?ref={branch_name}")
 
 # Publish .json of map of file to url
 with open("ci_pipeline/file_map.json", "w") as outfile:
