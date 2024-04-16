@@ -1,5 +1,5 @@
 -- run me on a new computer to listen for git pull
-local cd = require("_cd.lua")
+local cd = require("_cd")
 
 pcall(rednet.open, "top")
 pcall(rednet.open, "bottom")

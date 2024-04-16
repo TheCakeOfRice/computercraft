@@ -1,4 +1,4 @@
-local cd = require("_cd_pipeline/_cd.lua")
+local cd = require("_cd_pipeline._cd")
 
 rednet.open("bottom")
 while true do

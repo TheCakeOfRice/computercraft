@@ -1,4 +1,4 @@
-os.loadAPI("funcs.lua")
+local funcs = require("funcs")
 
 function drawHome()
     term.clear()

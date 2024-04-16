@@ -1,4 +1,4 @@
-os.loadAPI("vars.lua")
+local vars = require("vars")
 
 -- filter function
 function ignoreNamedChests(name, _)

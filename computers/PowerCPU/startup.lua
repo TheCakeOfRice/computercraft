@@ -1,6 +1,6 @@
-local funcs = require("funcs.lua")
-local vars = require("vars.lua")
-local cd = require("_cd_pipeline/_cd.lua")
+local funcs = require("funcs")
+local vars = require("vars")
+local cd = require("_cd_pipeline._cd")
 
 rednet.open(vars.WIRED_MODEM_SIDE)
 

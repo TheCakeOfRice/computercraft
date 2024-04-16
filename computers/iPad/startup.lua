@@ -1,5 +1,5 @@
-os.loadAPI("funcs.lua")
-os.loadAPI("gui.lua")
+local funcs = require("funcs")
+local gui = require("gui")
 
 rednet.open("back")
 

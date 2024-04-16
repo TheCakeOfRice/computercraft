@@ -1,4 +1,4 @@
-os.loadAPI("vars.lua")
+local vars = require("vars")
 
 -- API calls
 function inventory()

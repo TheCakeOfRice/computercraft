@@ -1,5 +1,5 @@
-local vars = require("vars.lua")
-local cd = require("_cd_pipeline/_cd.lua")
+local vars = require("vars")
+local cd = require("_cd_pipeline._cd")
 
 term.clear()
 

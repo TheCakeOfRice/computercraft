@@ -1,5 +1,5 @@
-os.loadAPI("vars.lua")
-os.loadAPI("recipes.lua")
+local vars = require("vars")
+local recipes = require("recipes")
 
 for i=1, 9 do
     if recipes.CHEST[i] then
