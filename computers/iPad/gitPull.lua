@@ -1,4 +1,4 @@
-os.loadAPI("../vars.lua")
+os.loadAPI("vars.lua")
 base64 = require('base64')
 
 term.clear()
@@ -29,7 +29,8 @@ end
 -- get file map
 local branch = arg[1] or "mulungus-server"
 local mapURL = "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/ci_pipeline/file_map.json?ref="..tostring(branch)
-local fileMap = textutils.unserialiseJSON(getGitHubFile(mapURL))
+local _, fileMap = getGitHubFile(mapURL)
+fileMap = textutils.unserializeJSON(fileMap)
 
 -- update files on iPad
 local pulled = updateFiles("iPad", fileMap)
