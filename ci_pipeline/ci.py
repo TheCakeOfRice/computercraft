@@ -17,6 +17,10 @@ for cpu_name in os.listdir("./computers"):
         if filename.endswith(".lua"):
             print(f"Found .lua file at ./computers/{cpu_name}/{filename}?ref={branch_name}")
             file_map[cpu_name].append(f"{base_url}/computers/{cpu_name}/{filename}?ref={branch_name}")
+        elif filename == "cd_pipeline":
+            for cd_filename in os.listdir(f"./computers/{cpu_name}/cd_pipeline"):
+                print(f"Found .lua file at ./computers/{cpu_name}/cd_pipeline/{cd_filename}?ref={branch_name}")
+                file_map[cpu_name].append(f"{base_url}/computers/{cpu_name}/cd_pipeline/{cd_filename}?ref={branch_name}")
 
 # Publish .json of map of file to url
 with open("ci_pipeline/file_map.json", "w") as outfile:
