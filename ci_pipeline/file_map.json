@@ -1,11 +1,15 @@
 {
     "iPad": [
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/base64.lua?ref=mulungus-server",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/funcs.lua?ref=mulungus-server",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gitPull.lua?ref=mulungus-server",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gui.lua?ref=mulungus-server",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/startup.lua?ref=mulungus-server",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/test.lua?ref=mulungus-server",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/vars.lua?ref=mulungus-server"
     ],
     "MacGyver": [
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/chest.lua?ref=mulungus-server",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/recipes.lua?ref=mulungus-server",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/startup.lua?ref=mulungus-server",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/vars.lua?ref=mulungus-server"
