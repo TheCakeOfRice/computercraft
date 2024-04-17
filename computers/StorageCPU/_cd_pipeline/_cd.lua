@@ -19,7 +19,7 @@ function cd.updateFiles(label, fileMap)
 
     -- get each file and update
     for _, url in pairs(fileMap[label]) do
-        local filename, content, path = getGitHubFile(url)
+        local filename, content, path = cd.getGitHubFile(url)
 
         -- check if file is in _cd_pipeline
         local isCDFile = string.find(path, "_cd_pipeline")
