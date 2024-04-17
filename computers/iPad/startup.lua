@@ -24,7 +24,7 @@ while true do
 
             -- git pull was clicked
             else
-                os.run({}, "gitPull.lua")
+                shell.run({}, "gitPull.lua")
             end
         end
 
