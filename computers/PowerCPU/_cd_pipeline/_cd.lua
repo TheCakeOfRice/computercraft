@@ -1,4 +1,4 @@
-base64 = require("_base64")
+base64 = require("_cd_pipeline._base64")
 
 local cd = {}
 
