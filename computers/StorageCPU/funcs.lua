@@ -24,7 +24,7 @@ end
 function funcs.getChests()
     local chests = {}
     for _, type in pairs(vars.CHEST_TYPES) do
-        chests = concat(chests, { peripheral.find(type, funcs.ignoreNamedChests) })
+        chests = funcs.concat(chests, { peripheral.find(type, funcs.ignoreNamedChests) })
     end
     return chests
 end
