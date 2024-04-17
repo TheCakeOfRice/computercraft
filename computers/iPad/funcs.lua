@@ -1,25 +1,27 @@
 local vars = require("vars")
 
+local funcs = {}
+
 -- API calls
-function inventory()
+function funcs.inventory()
     rednet.send(vars.STORAGE_CPU, { method="inventory" })
     local _, message = rednet.receive(nil, 5)
     return message
 end
 
-function get(item, count)
+function funcs.get(item, count)
     rednet.send(vars.STORAGE_CPU, { method="get", item=item, count=count })
     local _, message = rednet.receive(nil, 5)
     return message
 end
 
-function depositLastRow()
+function funcs.depositLastRow()
     rednet.send(vars.STORAGE_CPU, { method="depositLastRow" })
     local _, message = rednet.receive(nil, 5)
     return message
 end
 
-function stringifyCount(count)
+function funcs.stringifyCount(count)
     local str = ""
     if count < 1000 then
         str = tostring(count)
@@ -34,7 +36,7 @@ function stringifyCount(count)
     return str
 end
 
-function search(inv, searchTerm)
+function funcs.search(inv, searchTerm)
     print("called search")
     -- parsing search terms
     local modTerms = {}
@@ -75,3 +77,5 @@ function search(inv, searchTerm)
 
     return newInv
 end
+
+return funcs

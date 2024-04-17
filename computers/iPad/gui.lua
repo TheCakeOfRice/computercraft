@@ -1,6 +1,8 @@
 local funcs = require("funcs")
 
-function drawHome()
+local gui = {}
+
+function gui.drawHome()
     term.clear()
 
     local no_text_line = "                          "
@@ -24,7 +26,7 @@ function drawHome()
     end
 end
 
-function drawInv(inv, y)
+function gui.drawInv(inv, y)
     term.clear()
     for i, item in ipairs(inv) do
         -- only write up to 19 lines
@@ -50,21 +52,21 @@ function drawInv(inv, y)
     term.blit(" Deposit  ", "0000000000", "eeeeeeeeee")
 end
 
-function drawSuccess()
+function gui.drawSuccess()
     term.setCursorPos(1, 20)
     term.clearLine()
     term.write("       ")
     term.blit(" Success! ", "0000000000", "dddddddddd")
 end
 
-function drawFailed()
+function gui.drawFailed()
     term.setCursorPos(1, 20)
     term.clearLine()
     term.write("       ")
     term.blit(" Failed ", "00000000", "eeeeeeee")
 end
 
-function drawQuantityPrompt()
+function gui.drawQuantityPrompt()
     term.setCursorPos(1, 20)
     term.clearLine()
     term.write(" ")
@@ -72,10 +74,12 @@ function drawQuantityPrompt()
     term.write(" ")
 end
 
-function drawSearchPrompt()
+function gui.drawSearchPrompt()
     term.setCursorPos(1, 20)
     term.clearLine()
     term.write(" ")
     term.blit(" Search:", "00000000", "bbbbbbbb")
     term.write(" ")
 end
+
+return gui

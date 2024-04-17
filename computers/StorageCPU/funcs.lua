@@ -1,7 +1,9 @@
 local vars = require("vars")
 
+local funcs = {}
+
 -- filter function
-function ignoreNamedChests(name, _)
+function funcs.ignoreNamedChests(name, _)
     for _, dirty in pairs(vars.BLACKLIST) do
         if name == dirty then
             return false
@@ -11,7 +13,7 @@ function ignoreNamedChests(name, _)
 end
 
 -- concatenates tables
-function concat(t1, t2)
+function funcs.concat(t1, t2)
     for i=1, #t2 do
         t1[#t1 + 1] = t2[i]
     end
@@ -19,7 +21,7 @@ function concat(t1, t2)
 end
 
 -- gets all chests as a list of tables
-function getChests()
+function funcs.getChests()
     local chests = {}
     for _, type in pairs(vars.CHEST_TYPES) do
         chests = concat(chests, { peripheral.find(type, ignoreNamedChests) })
@@ -28,7 +30,7 @@ function getChests()
 end
 
 -- returns a table of name : count values
-function getInventory()
+function funcs.getInventory()
     local inventory = {}
     local indexMap = {}
     local chests = getChests()
@@ -76,7 +78,7 @@ local function withdraw(itemName, itemCount)
 end
 
 -- returns bool
-function sendToPlayer(itemName, itemCount)
+function funcs.sendToPlayer(itemName, itemCount)
     -- move items to withdrawal chest
     if not withdraw(itemName, itemCount) then
         print("funcs.sendToPlayer: Failed withdrawing items!")
@@ -100,7 +102,7 @@ function sendToPlayer(itemName, itemCount)
 end
 
 -- returns bool
-function export(target, itemName, itemCount, toSlot)
+function funcs.export(target, itemName, itemCount, toSlot)
     -- move items to withdrawal chest
     if not withdraw(itemName, itemCount) then
         print("funcs.export: Failed withdrawing items!")
@@ -129,7 +131,7 @@ function export(target, itemName, itemCount, toSlot)
 end
 
 -- import from deposit chest, returns bool
-function deposit()
+function funcs.deposit()
     depositChest = peripheral.wrap(vars.DEPOSIT_CHEST)
     local chests = getChests()
     for slot, item in pairs(depositChest.list()) do
@@ -150,7 +152,7 @@ function deposit()
 end
 
 -- returns bool
-function depositLastRow()
+function funcs.depositLastRow()
     -- clear deposit chest first
     if deposit() then
         -- move items from player to deposit chest
@@ -166,3 +168,5 @@ function depositLastRow()
         return false
     end
 end
+
+return funcs

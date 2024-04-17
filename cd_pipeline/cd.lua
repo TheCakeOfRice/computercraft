@@ -1,12 +1,14 @@
-base64 = require('base64')
+base64 = require('_cd_pipeline._base64')
 
-function getGitHubFile(url)
+local cd = {}
+
+function cd.getGitHubFile(url)
     local response = textutils.unserialiseJSON(http.get(url).readAll())
     print("Got "..tostring(response.name).." from GitHub")
     return response.name, base64.decode(response.content), response.path
 end
 
-function updateFiles(label, fileMap)
+function cd.updateFiles(label, fileMap)
     if not fileMap[label] then
         print("File map does not contain the label "..tostring(label))
         return false
@@ -35,3 +37,5 @@ function updateFiles(label, fileMap)
 
     return true
 end
+
+return cd
