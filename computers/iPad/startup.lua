@@ -10,11 +10,11 @@ local state = "home"
 gui.drawHome()
 
 -- init variables for "inv" state
-local inv = funcs.inventory()
+local inv = {}
 local scroll_y = 1
 
 while true do
-    while state == "home" do
+    if state == "home" then
         local event, dir, x, y = os.pullEvent()
         if event == "mouse_click" then
             -- inventory was clicked
@@ -26,12 +26,11 @@ while true do
 
             -- git pull was clicked
             else
-                os.run("gitPull.lua")
+                os.run({}, "gitPull.lua")
             end
         end
-    end
 
-    while state == "inv" do
+    elseif state == "inv" then
         local event, dir, x, y = os.pullEvent()
         if event == "mouse_click" then
             -- a button was clicked
