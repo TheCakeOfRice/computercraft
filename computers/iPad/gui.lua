@@ -11,6 +11,7 @@ function gui.drawHome()
     local blue_line = "bbbbbbbbbbbbbbbbbbbbbbbbbb"
 
     for y=1, 20 do
+        term.setCursorPos(1, y)
         -- inventory button on top half of screen, white text, red background
         if y == 5 then
             term.blit("        Inventory         ", white_line, red_line)
