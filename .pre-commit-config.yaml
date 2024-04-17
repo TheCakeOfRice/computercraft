@@ -6,5 +6,5 @@ repos:
       name: ci_pipeline
       entry: python ./ci_pipeline/ci.py
       language: python
-      types: [python, lua]
+      always_run: true
       additional_dependencies: [pygit2]
