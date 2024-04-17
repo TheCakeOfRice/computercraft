@@ -24,7 +24,7 @@ end
 function funcs.getChests()
     local chests = {}
     for _, type in pairs(vars.CHEST_TYPES) do
-        chests = concat(chests, { peripheral.find(type, ignoreNamedChests) })
+        chests = concat(chests, { peripheral.find(type, funcs.ignoreNamedChests) })
     end
     return chests
 end
@@ -33,7 +33,7 @@ end
 function funcs.getInventory()
     local inventory = {}
     local indexMap = {}
-    local chests = getChests()
+    local chests = funcs.getChests()
     for _, chest in ipairs(chests) do
         for _, item in pairs(chest.list()) do
             if indexMap[item.name] then
@@ -56,7 +56,7 @@ end
 local function withdraw(itemName, itemCount)
     local numMoved = 0 
     local leftToMove = itemCount
-    local chests = getChests()
+    local chests = funcs.getChests()
     for _, chest in ipairs(chests) do
         if leftToMove > 0 then
             for slot, item in pairs(chest.list()) do
@@ -133,7 +133,7 @@ end
 -- import from deposit chest, returns bool
 function funcs.deposit()
     depositChest = peripheral.wrap(vars.DEPOSIT_CHEST)
-    local chests = getChests()
+    local chests = funcs.getChests()
     for slot, item in pairs(depositChest.list()) do
         local numMoved = 0 
         local leftToMove = item.count
@@ -154,7 +154,7 @@ end
 -- returns bool
 function funcs.depositLastRow()
     -- clear deposit chest first
-    if deposit() then
+    if funcs.deposit() then
         -- move items from player to deposit chest
         local invMgr = peripheral.wrap(vars.INVENTORY_MANAGER)
         for _, item in pairs(invMgr.getItems()) do
@@ -163,7 +163,7 @@ function funcs.depositLastRow()
             end
         end
         -- deposit from deposit chest
-        return deposit()
+        return funcs.deposit()
     else
         return false
     end
