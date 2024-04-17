@@ -6,15 +6,13 @@ rednet.open("back")
 -- init state variable
 local state = "home"
 
--- start gui on home screen
-gui.drawHome()
-
 -- init variables for "inv" state
 local inv = {}
 local scroll_y = 1
 
 while true do
     if state == "home" then
+        gui.drawHome()
         local event, dir, x, y = os.pullEvent()
         if event == "mouse_click" then
             -- inventory was clicked
@@ -38,10 +36,9 @@ while true do
                 -- home was clicked
                 if x <= 7 then
                     state = "home"
-                    gui.drawHome()
 
                 -- search was clicked
-                elseif x >= 8 and x < 18 then
+                elseif x >= 8 and x < 17 then
                     gui.drawSearchPrompt()
                     local searchTerm = read()
                     inv = funcs.inventory()
