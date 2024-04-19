@@ -13,7 +13,7 @@ while true do
     -- fill all generators
     for _, generator in pairs(generators) do
         if #generator.list() == 0 then
-            funcs.export("minecraft:bamboo", 64, generator.name)
+            funcs.callExport("minecraft:bamboo", 64, generator.name)
         end
     end
 
@@ -32,7 +32,7 @@ while true do
     -- fill all placers
     for _, placer in pairs(placers) do
         if #placer.list() == 0 then
-            funcs.export("minecraft:dark_oak_log", 5, placer.name)
+            funcs.callExport("minecraft:dark_oak_log", 5, placer.name)
         end
     end
 

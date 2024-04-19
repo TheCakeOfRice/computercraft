@@ -15,7 +15,7 @@ function funcs.getAll(type)
     return periphs
 end
 
-function funcs.export(item, count, target)
+function funcs.callExport(item, count, target)
     rednet.send(vars.STORAGE_CPU, { method="export", item=item, count=count, target=target })
     local _, message = rednet.receive(nil, 5)
     return message
