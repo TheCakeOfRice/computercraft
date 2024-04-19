@@ -2,8 +2,21 @@ local vars = require("vars")
 
 local funcs = {}
 
-function funcs.bamboo(count, targetGenerator)
-    rednet.send(vars.STORAGE_CPU, { method="export", item="minecraft:bamboo", count=count, target=targetGenerator })
+-- wraps all peripherals of type, plus names
+function funcs.getAll(type)
+    local periphs = {}
+    for _, name in pairs(peripheral.getNames()) do
+        if funcs.startswith(name, type) then
+            local periph = peripheral.wrap(name)
+            periph.name = name
+            table.insert(periphs, periph)
+        end
+    end
+    return periphs
+end
+
+function funcs.export(item, count, target)
+    rednet.send(vars.STORAGE_CPU, { method="export", item=item, count=count, target=target })
     local _, message = rednet.receive(nil, 5)
     return message
 end

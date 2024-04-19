@@ -4,32 +4,16 @@ local cd = require("_cd_pipeline._cd")
 
 rednet.open(vars.WIRED_MODEM_SIDE)
 
-local generators = {}
-for _, name in pairs(peripheral.getNames()) do
-    if funcs.startswith(name, vars.GENERATOR_TYPE) then
-        print("Found generator "..name)
-        local generator = peripheral.wrap(name)
-        generator.name = name
-        table.insert(generators, generator)
-    end
-end
-
-local furnaces = {}
-for _, name in pairs(peripheral.getNames()) do
-    if funcs.startswith(name, vars.FURNACE_TYPE) then
-        print("Found furnace "..name)
-        local furnace = peripheral.wrap(name)
-        furnace.name = name
-        table.insert(furnaces, furnace)
-    end
-end
+local generators = funcs.getAll(vars.GENERATOR_TYPE)
+local furnaces = funcs.getAll(vars.FURNACE_TYPE)
+local placers = funcs.getAll("cyclic:placer")
 
 print("Starting main loop...")
 while true do
     -- fill all generators
     for _, generator in pairs(generators) do
         if #generator.list() == 0 then
-            funcs.bamboo(64, generator.name)
+            funcs.export("minecraft:bamboo", 64, generator.name)
         end
     end
 
@@ -43,6 +27,13 @@ while true do
     end
     if needsDeposit then
         funcs.callDeposit()
+    end
+
+    -- fill all placers
+    for _, placer in pairs(placers) do
+        if #placer.list() == 0 then
+            funcs.export("minecraft:dark_oak_log", 5, placer.name)
+        end
     end
 
     local _, message = rednet.receive(nil, 10)
