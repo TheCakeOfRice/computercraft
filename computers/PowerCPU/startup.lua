@@ -13,7 +13,7 @@ while true do
     -- fill all generators
     for _, generator in pairs(generators) do
         if #generator.list() == 0 then
-            funcs.callExport("minecraft:bamboo", 64, generator.name)
+            funcs.callExport("minecraft:blaze_rod", 64, generator.name)
         end
     end
 
