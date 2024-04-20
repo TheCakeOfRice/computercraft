@@ -12,7 +12,8 @@ local vars = {
         CRAFTING_CHEST,
         "minecraft:chest_30", -- wheat seed sower
         "minecraft:chest_31", -- tomato seed sower
-        "minecraft:chest_32" -- onion sower
+        "minecraft:chest_32", -- onion sower
+        "minecraft:chest_33" -- cabbage seed sower
     },
     CHEST_TYPES = {
         "minecraft:chest",

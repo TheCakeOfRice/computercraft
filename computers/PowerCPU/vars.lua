@@ -7,7 +7,8 @@ local vars = {
     SOWER_SEED_MAP = {
         ["minecraft:chest_30"] = "minecraft:wheat_seeds",
         ["minecraft:chest_31"] = "farmersdelight:tomato_seeds",
-        ["minecraft:chest_32"] = "farmersdelight:onion"
+        ["minecraft:chest_32"] = "farmersdelight:onion",
+        ["minecraft:chest_33"] = "farmersdelight:cabbage_seeds"
     }
 }
 
