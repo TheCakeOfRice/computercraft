@@ -10,7 +10,9 @@ local vars = {
         DEPOSIT_CHEST,
         WITHDRAWAL_CHEST,
         CRAFTING_CHEST,
-        "minecraft:chest_30" -- wheat seed sower
+        "minecraft:chest_30", -- wheat seed sower
+        "minecraft:chest_31", -- tomato seed sower
+        "minecraft:chest_32" -- onion sower
     },
     CHEST_TYPES = {
         "minecraft:chest",
