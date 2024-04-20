@@ -5,7 +5,7 @@ local vars = {
     FURNACE_TYPE = "thermal:machine_furnace",
     DEPOSIT_CHEST = "minecraft:chest_11",
     SOWER_SEED_MAP = {
-        ["industrialforegoing:plant_sower_0"] = "minecraft:wheat_seeds"
+        ["minecraft:chest_30"] = "minecraft:wheat_seeds"
     }
 }
 

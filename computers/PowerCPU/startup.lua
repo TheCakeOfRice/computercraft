@@ -7,7 +7,13 @@ rednet.open(vars.WIRED_MODEM_SIDE)
 local generators = funcs.getAll(vars.GENERATOR_TYPE)
 local furnaces = funcs.getAll(vars.FURNACE_TYPE)
 local placers = funcs.getAll("cyclic:placer")
-local sowers = funcs.getAll("industrialforegoing:plant_sower")
+
+local sowers = {}
+for name, seed in pairs(vars.SOWER_SEED_MAP) do
+    local sower = peripheral.wrap(name)
+    sower.name = name
+    table.insert(sowers, sower)
+end
 
 print("Starting main loop...")
 while true do

@@ -9,7 +9,8 @@ local vars = {
     BLACKLIST = {
         DEPOSIT_CHEST,
         WITHDRAWAL_CHEST,
-        CRAFTING_CHEST
+        CRAFTING_CHEST,
+        "minecraft:chest_30" -- wheat seed sower
     },
     CHEST_TYPES = {
         "minecraft:chest",
