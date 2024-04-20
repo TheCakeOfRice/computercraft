@@ -7,6 +7,7 @@ rednet.open(vars.WIRED_MODEM_SIDE)
 local generators = funcs.getAll(vars.GENERATOR_TYPE)
 local furnaces = funcs.getAll(vars.FURNACE_TYPE)
 local placers = funcs.getAll("cyclic:placer")
+local sowers = funcs.getAll("industrialforegoing:plant_sower")
 
 print("Starting main loop...")
 while true do
@@ -33,6 +34,13 @@ while true do
     for _, placer in pairs(placers) do
         if #placer.list() == 0 then
             funcs.callExport("minecraft:dark_oak_log", 5, placer.name)
+        end
+    end
+
+    -- fill all sowers
+    for _, sower in pairs(sowers) do
+        if #sower.list() == 0 then
+            funcs.callExport(vars.SOWER_SEED_MAP[sower.name], 64, sower.name)
         end
     end
 

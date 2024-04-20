@@ -3,7 +3,10 @@ local vars = {
     WIRED_MODEM_SIDE = "bottom",
     GENERATOR_TYPE = "cyclic:generator_fuel",
     FURNACE_TYPE = "thermal:machine_furnace",
-    DEPOSIT_CHEST = "minecraft:chest_11"
+    DEPOSIT_CHEST = "minecraft:chest_11",
+    SOWER_SEED_MAP = {
+        ["industrialforegoing:plant_sower_0"] = "minecraft:wheat_seeds"
+    }
 }
 
 return vars
