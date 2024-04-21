@@ -11,10 +11,12 @@ local _, fileMap = cd.getGitHubFile(mapURL)
 fileMap = textutils.unserializeJSON(fileMap)
 
 -- add PAT in URLs
-local prefix = "http://"
-for cpuName, url in pairs(fileMap) do
-    local suffix = string.sub(url, #prefix + 1, #url)
-    fileMap[cpuName] = prefix..env.GITHUB_API_KEY.."@"..suffix
+local prefix = "https://"
+for cpuName, urlList in pairs(fileMap) do
+    for i, url in ipairs(urlList) do
+        local suffix = string.sub(url, #prefix + 1, #url)
+        fileMap[cpuName][i] = prefix..env.GITHUB_API_KEY.."@"..suffix
+    end
 end
 
 -- update files on iPad
