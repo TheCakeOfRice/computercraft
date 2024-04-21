@@ -30,14 +30,21 @@ funcs.chests = chests
 -- constructs inventory, a list of tables containing item info
 local inventory = {}
 for _, chest in ipairs(funcs.chests) do
+    local chestName = peripheral.getName(chest)
     for slot, item in pairs(chest.list()) do
         if inventory[item.name] then
             inventory[item.name].count = inventory[item.name].count + item.count
+            if inventory[item.name].locatedAt[chestName] then
+                inventory[item.name].locatedAt[chestName][#inventory[item.name].locatedAt[chestName] + 1] = slot
+            else
+                inventory[item.name].locatedAt[chestName] = { slot }
+            end
         else
             local modName = string.match(item.name, "(.+):")
             -- local displayName = string.match(item.name, ".+:(.+)")
             local displayName = chest.getItemDetail(slot).displayName
-            inventory[item.name] = { name=item.name, count=item.count, mod=modName, displayName=displayName }
+            local locatedAt = { [chestName]={ slot }}
+            inventory[item.name] = { name=item.name, count=item.count, mod=modName, displayName=displayName, locatedAt=locatedAt }
         end
     end
 end
@@ -48,18 +55,22 @@ local function withdraw(itemName, itemCount)
     local leftToMove = itemCount
     for _, chest in ipairs(funcs.chests) do
         if leftToMove > 0 then
-            for slot, item in pairs(chest.list()) do
-                if leftToMove > 0 then
-                    if item.name == itemName then
-                        -- limit number to move to avoid errors
-                        local numToMove = math.min(leftToMove, chest.getItemDetail(slot).maxCount, item.count)
+            local chestName = peripheral.getName(chest)
+            if funcs.inventory[itemName].locatedAt[chestName] then
+                for i, slot in ipairs(funcs.inventory[itemName].locatedAt[chestName]) do
+                    local slotCount = chest.getItemDetail(slot).count
 
-                        local numMoved = chest.pushItems(vars.WITHDRAWAL_CHEST, slot, numToMove)
+                    -- limit number to move to avoid errors
+                    local numToMove = math.min(leftToMove, slotCount)
 
-                        -- update counts
-                        funcs.inventory[item.name].count = funcs.inventory[item.name].count - numMoved
-                        leftToMove = leftToMove - numMoved
+                    local numMoved = chest.pushItems(vars.WITHDRAWAL_CHEST, slot, numToMove)
+
+                    -- update counts
+                    funcs.inventory[itemName].count = funcs.inventory[itemName].count - numMoved
+                    if slotCount == numMoved then
+                        table.remove(funcs.inventory[itemName].locatedAt[chestName], i)
                     end
+                    leftToMove = leftToMove - numMoved
                 end
             end
         end
@@ -125,6 +136,15 @@ function funcs.export(target, itemName, itemCount, toSlot)
     end
 end
 
+local function tableContains(tbl, val)
+    for _, value in ipairs(tbl) do
+        if val == value then
+            return true
+        end
+    end
+    return false
+end
+
 -- import from deposit chest, returns bool
 function funcs.deposit()
     depositChest = peripheral.wrap(vars.DEPOSIT_CHEST)
@@ -132,10 +152,28 @@ function funcs.deposit()
         local leftToMove = item.count
         for _, chest in ipairs(funcs.chests) do
             if leftToMove > 0 then
-                local numMoved = depositChest.pushItems(peripheral.getName(chest), slot, item.count)
+                local chestName = peripheral.getName(chest)
+                local numMoved = depositChest.pushItems(chestName, slot, item.count)
 
                 -- update counts
-                funcs.inventory[item.name].count = funcs.inventory[item.name].count + numMoved
+                for slot, item in pairs(chest.list()) do
+                    if funcs.inventory[item.name] then
+                        funcs.inventory[item.name].count = funcs.inventory[item.name].count + numMoved
+                        if funcs.inventory[item.name].locatedAt[chestName] then
+                            if not tableContains(funcs.inventory[item.name].locatedAt[chestName], slot) then
+                                funcs.inventory[item.name].locatedAt[chestName][#funcs.inventory[item.name].locatedAt[chestName] + 1] = slot
+                            end
+                        else
+                            funcs.inventory[item.name].locatedAt[chestName] = { slot }
+                        end
+                    else
+                        local modName = string.match(item.name, "(.+):")
+                        -- local displayName = string.match(item.name, ".+:(.+)")
+                        local displayName = chest.getItemDetail(slot).displayName
+                        local locatedAt = { [chestName]={ slot }}
+                        funcs.inventory[item.name] = { name=item.name, count=item.count, mod=modName, displayName=displayName, locatedAt=locatedAt }
+                    end
+                end
                 leftToMove = leftToMove - numMoved
             end
         end
