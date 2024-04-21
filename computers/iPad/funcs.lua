@@ -31,7 +31,7 @@ end
 
 function funcs.depositLastRow()
     rednet.send(vars.STORAGE_CPU, { method="depositLastRow" })
-    local _, message = rednet.receive(nil, 3)
+    local _, message = rednet.receive(nil, 7)
     return message
 end
 
