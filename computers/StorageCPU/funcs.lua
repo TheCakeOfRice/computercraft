@@ -2,6 +2,29 @@ local vars = require("vars")
 
 local funcs = {}
 
+-- finds all chests in the network, blacklist applied (reboot required when adding chests)
+local chests = {}
+for _, type in ipairs(vars.CHEST_TYPES) do
+    chests = funcs.concat(chests, { peripheral.find(type, funcs.ignoreNamedChests) })
+end
+funcs.chests = chests
+
+-- constructs inventory, a list of tables containing item info
+local inventory = {}
+for _, chest in ipairs(funcs.chests) do
+    for slot, item in pairs(chest.list()) do
+        if inventory[item.name] then
+            inventory[item.name].count = inventory[item.name].count + item.count
+        else
+            local modName = string.match(item.name, "(.+):")
+            -- local displayName = string.match(item.name, ".+:(.+)")
+            local displayName = chest.getItemDetail(slot).displayName
+            inventory[item.name] = { name=item.name, count=item.count, mod=modName, displayName=displayName }
+        end
+    end
+end
+funcs.inventory = inventory
+
 -- filter function
 function funcs.ignoreNamedChests(name, _)
     for _, dirty in ipairs(vars.BLACKLIST) do
@@ -20,51 +43,21 @@ function funcs.concat(t1, t2)
     return t1
 end
 
--- gets all chests as a list of tables
-function funcs.getChests()
-    local chests = {}
-    for _, type in ipairs(vars.CHEST_TYPES) do
-        chests = funcs.concat(chests, { peripheral.find(type, funcs.ignoreNamedChests) })
-    end
-    return chests
-end
-
--- returns a list of tables containing item info, ordered by count
-function funcs.getInventory()
-    local inventory = {}
-    local indexMap = {}
-    local chests = funcs.getChests()
-    for _, chest in ipairs(chests) do
-        for _, item in pairs(chest.list()) do
-            if indexMap[item.name] then
-                inventory[indexMap[item.name]].count = inventory[indexMap[item.name]].count + item.count
-            else
-                local modName = string.match(item.name, "(.+):")
-                local displayName = string.match(item.name, ".+:(.+)")
-                inventory[#inventory + 1] = { name=item.name, count=item.count, mod=modName, displayName=displayName }
-                indexMap[item.name] = #inventory
-            end
-        end
-    end
-
-    -- sort by count
-    table.sort(inventory, function (item1, item2) return item1.count > item2.count end )
-    return inventory
-end
-
 -- returns bool
 local function withdraw(itemName, itemCount)
     local leftToMove = itemCount
-    local chests = funcs.getChests()
-    for _, chest in ipairs(chests) do
+    for _, chest in ipairs(funcs.chests) do
         if leftToMove > 0 then
             for slot, item in pairs(chest.list()) do
                 if leftToMove > 0 then
                     if item.name == itemName then
-                        -- print("Found "..tostring(item.count).." of "..item.name)
+                        -- limit number to move to avoid errors
                         local numToMove = math.min(leftToMove, chest.getItemDetail(slot).maxCount, item.count)
+
                         local numMoved = chest.pushItems(vars.WITHDRAWAL_CHEST, slot, numToMove)
-                        -- print("...Added "..tostring(numMoved).." to the withdraw chest")
+
+                        -- update counts
+                        funcs.inventory[item.name].count = funcs.inventory[item.name].count - numMoved
                         leftToMove = leftToMove - numMoved
                     end
                 end
@@ -97,7 +90,7 @@ function funcs.sendToPlayer(itemName, itemCount)
         if numMoved == itemCount then
             return true
         else
-            print("funcs.sendToPlayer: Only sent " .. tostring(numMoved) .. " of " .. tostring(itemCount) .. " items.")
+            print("funcs.sendToPlayer: Only sent " .. tostring(numMoved) .. " of expected " .. tostring(itemCount) .. " items.")
             return false
         end
     end
@@ -135,12 +128,14 @@ end
 -- import from deposit chest, returns bool
 function funcs.deposit()
     depositChest = peripheral.wrap(vars.DEPOSIT_CHEST)
-    local chests = funcs.getChests()
     for slot, item in pairs(depositChest.list()) do
         local leftToMove = item.count
-        for _, chest in ipairs(chests) do
+        for _, chest in ipairs(funcs.chests) do
             if leftToMove > 0 then
                 local numMoved = depositChest.pushItems(peripheral.getName(chest), slot, item.count)
+
+                -- update counts
+                funcs.inventory[item.name].count = funcs.inventory[item.name].count + numMoved
                 leftToMove = leftToMove - numMoved
             end
         end

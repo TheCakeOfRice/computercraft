@@ -5,8 +5,18 @@ local funcs = {}
 -- API calls
 function funcs.inventory()
     rednet.send(vars.STORAGE_CPU, { method="inventory" })
-    local _, message = rednet.receive(nil, 3)
-    return message
+    local _, inv = rednet.receive(nil, 3)
+
+    -- converts inventory data into format expected by the iPad GUI
+    local guiInv = {}
+    for _, item in pairs(inv) do
+        guiInv[#guiInv + 1] = item
+    end
+
+    -- sorting
+    table.sort(guiInv, function (item1, item2) return item1.count > item2.count end )
+    
+    return guiInv
 end
 
 function funcs.get(item, count)
