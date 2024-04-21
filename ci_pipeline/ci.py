@@ -22,7 +22,7 @@ for cpu_name in os.listdir("./computers"):
         pass
 
     for filename in os.listdir("./cd_pipeline"):
-        if filename.endswith(".lua"):
+        if filename.endswith(".lua") and filename != "env.lua":
             shutil.copy(f"./cd_pipeline/{filename}", f"./computers/{cpu_name}/_cd_pipeline/_{filename}")
             print(f"Found .lua file at ./computers/{cpu_name}/_cd_pipeline/_{filename}?ref={branch_name}")
 
