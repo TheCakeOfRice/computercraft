@@ -7,6 +7,10 @@ function funcs.inventory()
     rednet.send(vars.STORAGE_CPU, { method="inventory" })
     local _, inv = rednet.receive(nil, 3)
 
+    if not inv then
+        return false
+    end
+
     -- converts inventory data into format expected by the iPad GUI
     local guiInv = {}
     for _, item in pairs(inv) do

@@ -19,8 +19,12 @@ while true do
             if y <= 10 then
                 state = "inv"
                 inv = funcs.inventory()
-                scroll_y = 1
-                gui.drawInv(inv, scroll_y)
+                if inv then
+                    scroll_y = 1
+                    gui.drawInv(inv, scroll_y)
+                else
+                    gui.drawFailed()
+                end
 
             -- git pull was clicked
             else
