@@ -4,7 +4,7 @@ local funcs = {}
 
 -- filter function
 function funcs.ignoreNamedChests(name, _)
-    for _, dirty in pairs(vars.BLACKLIST) do
+    for _, dirty in ipairs(vars.BLACKLIST) do
         if name == dirty then
             return false
         end
@@ -23,18 +23,18 @@ end
 -- gets all chests as a list of tables
 function funcs.getChests()
     local chests = {}
-    for _, type in pairs(vars.CHEST_TYPES) do
+    for _, type in ipairs(vars.CHEST_TYPES) do
         chests = funcs.concat(chests, { peripheral.find(type, funcs.ignoreNamedChests) })
     end
     return chests
 end
 
--- returns a table of name : count values
+-- returns a list of tables containing item info, ordered by count
 function funcs.getInventory()
     local inventory = {}
     local indexMap = {}
     local chests = funcs.getChests()
-    for _, chest in pairs(chests) do
+    for _, chest in ipairs(chests) do
         for _, item in pairs(chest.list()) do
             if indexMap[item.name] then
                 inventory[indexMap[item.name]].count = inventory[indexMap[item.name]].count + item.count
@@ -56,7 +56,7 @@ end
 local function withdraw(itemName, itemCount)
     local leftToMove = itemCount
     local chests = funcs.getChests()
-    for _, chest in pairs(chests) do
+    for _, chest in ipairs(chests) do
         if leftToMove > 0 then
             for slot, item in pairs(chest.list()) do
                 if leftToMove > 0 then
@@ -138,7 +138,7 @@ function funcs.deposit()
     local chests = funcs.getChests()
     for slot, item in pairs(depositChest.list()) do
         local leftToMove = item.count
-        for _, chest in pairs(chests) do
+        for _, chest in ipairs(chests) do
             if leftToMove > 0 then
                 local numMoved = depositChest.pushItems(peripheral.getName(chest), slot, item.count)
                 leftToMove = leftToMove - numMoved

@@ -53,10 +53,10 @@ function funcs.search(inv, searchTerm)
     end
 
     newInv = {}
-    for _, item in pairs(inv) do
+    for _, item in ipairs(inv) do
         -- checking for mod match
         local modMatch = true
-        for _, modTerm in pairs(modTerms) do
+        for _, modTerm in ipairs(modTerms) do
             if not string.find(string.lower(item.mod), modTerm) then
                 modMatch = false
             end
@@ -64,7 +64,7 @@ function funcs.search(inv, searchTerm)
 
         -- checking for item match
         local itemMatch = true
-        for _, itemTerm in pairs(itemTerms) do
+        for _, itemTerm in ipairs(itemTerms) do
             if not string.find(string.lower(item.displayName), itemTerm) then
                 itemMatch = false
             end
