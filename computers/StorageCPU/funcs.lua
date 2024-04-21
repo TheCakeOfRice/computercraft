@@ -2,14 +2,22 @@ local vars = require("vars")
 
 local funcs = {}
 
--- filter function
-function funcs.ignoreNamedChests(name, _)
-    for _, dirty in ipairs(vars.BLACKLIST) do
-        if name == dirty then
-            return false
+local function tableContains(tbl, val)
+    for _, value in ipairs(tbl) do
+        if val == value then
+            return true
         end
     end
-    return true
+    return false
+end
+
+-- filter function
+function funcs.ignoreNamedChests(name, _)
+    if tableContains(vars.BLACKLIST, name) then
+        return false
+    else
+        return true
+    end
 end
 
 -- concatenates tables
@@ -137,15 +145,6 @@ function funcs.export(target, itemName, itemCount, toSlot)
         print("funcs.export: Only exported " .. tostring(numMoved) .. " of " .. tostring(itemCount) .. " items.")
         return false
     end
-end
-
-local function tableContains(tbl, val)
-    for _, value in ipairs(tbl) do
-        if val == value then
-            return true
-        end
-    end
-    return false
 end
 
 local function union(t1, t2)
