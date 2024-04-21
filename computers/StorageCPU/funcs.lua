@@ -35,12 +35,13 @@ function funcs.getInventory()
     local indexMap = {}
     local chests = funcs.getChests()
     for _, chest in ipairs(chests) do
-        for _, item in pairs(chest.list()) do
+        for slot, item in pairs(chest.list()) do
             if indexMap[item.name] then
                 inventory[indexMap[item.name]].count = inventory[indexMap[item.name]].count + item.count
             else
                 local modName = string.match(item.name, "(.+):")
-                local displayName = string.match(item.name, ".+:(.+)")
+                -- local displayName = string.match(item.name, ".+:(.+)")
+                local displayName = chest.getItemDetail(slot).displayName
                 inventory[#inventory + 1] = { name=item.name, count=item.count, mod=modName, displayName=displayName }
                 indexMap[item.name] = #inventory
             end
