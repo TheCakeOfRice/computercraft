@@ -28,7 +28,9 @@ while true do
 
             -- git pull was clicked
             else
-                shell.run("gitPull")
+                gui.drawBranchPrompt()
+                local branch = read()
+                shell.run("gitPull", branch)
             end
         end
 

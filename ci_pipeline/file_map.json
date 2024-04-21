@@ -1,34 +1,34 @@
 {
     "iPad": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_base64.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_cd.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/cd_catalyst.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/funcs.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gitPull.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gui.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/startup.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/vars.lua?ref=mulungus-server"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_base64.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_cd.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/cd_catalyst.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/funcs.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gitPull.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gui.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/startup.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/vars.lua?ref=master"
     ],
     "MacGyver": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_base64.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_cd.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/chest.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/recipes.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/startup.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/vars.lua?ref=mulungus-server"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_base64.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_cd.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/chest.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/recipes.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/startup.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/vars.lua?ref=master"
     ],
     "PowerCPU": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_base64.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_cd.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/funcs.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/startup.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/vars.lua?ref=mulungus-server"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_base64.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_cd.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/funcs.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/startup.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/vars.lua?ref=master"
     ],
     "StorageCPU": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_base64.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_cd.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/funcs.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/startup.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/vars.lua?ref=mulungus-server"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_base64.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_cd.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/funcs.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/startup.lua?ref=master",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/vars.lua?ref=master"
     ]
 }

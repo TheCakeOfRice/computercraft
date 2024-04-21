@@ -85,4 +85,12 @@ function gui.drawSearchPrompt()
     term.write(" ")
 end
 
+function gui.drawBranchPrompt()
+    term.setCursorPos(1, 20)
+    term.clearLine()
+    term.write(" ")
+    term.blit(" Branch:", "00000000", "bbbbbbbb")
+    term.write(" ")
+end
+
 return gui

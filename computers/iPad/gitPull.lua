@@ -4,7 +4,7 @@ local cd = require("_cd_pipeline._cd")
 term.clear()
 
 -- get file map
-local branch = arg[1] or "mulungus-server"
+local branch = arg[1] or "master"
 local mapURL = "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/ci_pipeline/file_map.json?ref="..tostring(branch)
 local _, fileMap = cd.getGitHubFile(mapURL)
 fileMap = textutils.unserializeJSON(fileMap)
