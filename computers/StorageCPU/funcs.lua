@@ -54,7 +54,6 @@ end
 
 -- returns bool
 local function withdraw(itemName, itemCount)
-    local numMoved = 0 
     local leftToMove = itemCount
     local chests = funcs.getChests()
     for _, chest in ipairs(chests) do
@@ -62,20 +61,20 @@ local function withdraw(itemName, itemCount)
             for slot, item in pairs(chest.list()) do
                 if leftToMove > 0 then
                     if item.name == itemName then
-                        print("Found "..tostring(item.count).." of "..item.name)
+                        -- print("Found "..tostring(item.count).." of "..item.name)
                         local numToMove = math.min(leftToMove, chest.getItemDetail(slot).maxCount, item.count)
-                        numMoved = numMoved + chest.pushItems(vars.WITHDRAWAL_CHEST, slot, numToMove)
-                        print("...Added "..tostring(numMoved).." to the withdraw chest")
+                        local numMoved = chest.pushItems(vars.WITHDRAWAL_CHEST, slot, numToMove)
+                        -- print("...Added "..tostring(numMoved).." to the withdraw chest")
                         leftToMove = leftToMove - numMoved
                     end
                 end
             end
         end
     end
-    if numMoved == itemCount then
+    if leftToMove <= 0 then
         return true
     else
-        print("funcs.withdraw: Only withdrew " .. tostring(numMoved) .. " of " .. tostring(itemCount) .. " items.")
+        print("funcs.withdraw: Only withdrew " .. tostring(itemCount - leftToMove) .. " of " .. tostring(itemCount) .. " items.")
         return false
     end
 end
