@@ -165,29 +165,28 @@ function funcs.deposit()
         local displayName = depositChest.getItemDetail(slot).displayName
         local leftToMove = item.count
         for _, chest in ipairs(funcs.chests) do
-            if leftToMove > 0 then
+            if leftToMove > 0 and #chest.list() < chest.size() then
                 local chestName = peripheral.getName(chest)
-                local numMoved = depositChest.pushItems(chestName, slot, item.count)
+                for toSlot=1, chest.size() do
+                    if leftToMove > 0 then
+                        if not chest.getItemDetail(toSlot) then
+                            local numMoved = depositChest.pushItems(chestName, slot, item.count, toSlot)
 
-                -- update counts
-                local destLocatedAt = {}
-                for destSlot, destItem in pairs(chest.list()) do
-                    if destItem.name == itemName then
-                        destLocatedAt[#destLocatedAt + 1] = destSlot
+                            if funcs.inventory[itemName] then
+                                funcs.inventory[itemName].count = funcs.inventory[itemName].count + numMoved
+                                if funcs.inventory[itemName].locatedAt[chestName] then
+                                    funcs.inventory[itemName].locatedAt[chestName] = union(funcs.inventory[itemName].locatedAt[chestName], { toSlot })
+                                else
+                                    funcs.inventory[itemName].locatedAt[chestName] = { toSlot }
+                                end
+                            else
+                                local modName = string.match(itemName, "(.+):")
+                                funcs.inventory[itemName] = { name=itemName, count=numMoved, mod=modName, displayName=displayName, locatedAt={ toSlot } }
+                            end
+                            leftToMove = leftToMove - numMoved
+                        end
                     end
                 end
-                if funcs.inventory[itemName] then
-                    funcs.inventory[itemName].count = funcs.inventory[itemName].count + numMoved
-                    if funcs.inventory[itemName].locatedAt[chestName] then
-                        funcs.inventory[itemName].locatedAt[chestName] = union(funcs.inventory[itemName].locatedAt[chestName], destLocatedAt)
-                    else
-                        funcs.inventory[itemName].locatedAt[chestName] = destLocatedAt
-                    end
-                else
-                    local modName = string.match(itemName, "(.+):")
-                    funcs.inventory[itemName] = { name=itemName, count=numMoved, mod=modName, displayName=displayName, locatedAt=destLocatedAt }
-                end
-                leftToMove = leftToMove - numMoved
             end
         end
         if leftToMove > 0 then
