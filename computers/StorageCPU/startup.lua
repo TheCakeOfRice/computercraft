@@ -3,6 +3,7 @@ local vars = require("vars")
 local cd = require("_cd_pipeline._cd")
 
 print("Processing queue from APIServer...")
+rednet.open(vars.ENDER_MODEM_SIDE)
 rednet.open(vars.WIRED_MODEM_SIDE)
 while true do
     rednet.send(vars.API_SERVER, { method="pop" })

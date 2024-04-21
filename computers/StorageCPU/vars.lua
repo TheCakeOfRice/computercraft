@@ -1,5 +1,6 @@
 local vars = {
     API_SERVER = 16,
+    ENDER_MODEM_SIDE = "right",
     WIRED_MODEM_SIDE = "back", -- this connects to the chest network/other cpus
     DEPOSIT_CHEST = "minecraft:chest_11", -- should be on left of inventory manager
     WITHDRAWAL_CHEST = "minecraft:chest_10", -- should be on right of inventory manager
