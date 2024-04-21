@@ -22,7 +22,7 @@ for cpu_name in os.listdir("./computers"):
         pass
 
     for filename in os.listdir("./cd_pipeline"):
-        if filename.endswith(".lua") and filename != "env.lua":
+        if filename.endswith(".lua"):
             shutil.copy(f"./cd_pipeline/{filename}", f"./computers/{cpu_name}/_cd_pipeline/_{filename}")
             print(f"Found .lua file at ./computers/{cpu_name}/_cd_pipeline/_{filename}?ref={branch_name}")
 
@@ -31,7 +31,7 @@ for cpu_name in os.listdir("./computers"):
 
     # Loop through all other .lua files and construct github api urls
     for filename in os.listdir(f"./computers/{cpu_name}"):
-        if filename.endswith(".lua"):
+        if filename.endswith(".lua") and filename != "env.lua":
             print(f"Found .lua file at ./computers/{cpu_name}/{filename}?ref={branch_name}")
             file_map[cpu_name].append(f"{base_url}/computers/{cpu_name}/{filename}?ref={branch_name}")
 
