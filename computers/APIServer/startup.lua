@@ -1,6 +1,6 @@
 local vars = require("vars")
 local funcs = require("funcs")
-local cd = require("_/cd_pipeline._cd")
+local cd = require("_cd_pipeline._cd")
 
 local queue = {}
 
@@ -28,7 +28,7 @@ while true do
 
         -- give feedback to initator
         rednet.send(cpu, true)
-        
+
         if pulled then os.reboot() end
     else
         funcs.enqueue(queue, cpu, message)
