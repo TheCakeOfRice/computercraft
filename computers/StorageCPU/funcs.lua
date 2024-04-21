@@ -163,7 +163,7 @@ function funcs.deposit()
     depositChest = peripheral.wrap(vars.DEPOSIT_CHEST)
     for slot, item in pairs(depositChest.list()) do
         local itemName = item.name
-        local displayName = chest.getItemDetail(slot).displayName
+        local displayName = depositChest.getItemDetail(slot).displayName
         local leftToMove = item.count
         for _, chest in ipairs(funcs.chests) do
             if leftToMove > 0 then
