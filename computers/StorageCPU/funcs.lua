@@ -2,6 +2,24 @@ local vars = require("vars")
 
 local funcs = {}
 
+-- filter function
+function funcs.ignoreNamedChests(name, _)
+    for _, dirty in ipairs(vars.BLACKLIST) do
+        if name == dirty then
+            return false
+        end
+    end
+    return true
+end
+
+-- concatenates tables
+function funcs.concat(t1, t2)
+    for i=1, #t2 do
+        t1[#t1 + 1] = t2[i]
+    end
+    return t1
+end
+
 -- finds all chests in the network, blacklist applied (reboot required when adding chests)
 local chests = {}
 for _, type in ipairs(vars.CHEST_TYPES) do
@@ -24,24 +42,6 @@ for _, chest in ipairs(funcs.chests) do
     end
 end
 funcs.inventory = inventory
-
--- filter function
-function funcs.ignoreNamedChests(name, _)
-    for _, dirty in ipairs(vars.BLACKLIST) do
-        if name == dirty then
-            return false
-        end
-    end
-    return true
-end
-
--- concatenates tables
-function funcs.concat(t1, t2)
-    for i=1, #t2 do
-        t1[#t1 + 1] = t2[i]
-    end
-    return t1
-end
 
 -- returns bool
 local function withdraw(itemName, itemCount)
