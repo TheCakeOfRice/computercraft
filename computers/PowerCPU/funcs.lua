@@ -16,13 +16,13 @@ function funcs.getAll(type)
 end
 
 function funcs.callExport(item, count, target)
-    rednet.send(vars.STORAGE_CPU, { method="export", item=item, count=count, target=target })
+    rednet.send(vars.API_SERVER, { method="export", item=item, count=count, target=target })
     local _, message = rednet.receive(nil, 5)
     return message
 end
 
 function funcs.callDeposit()
-    rednet.send(vars.STORAGE_CPU, { method="deposit" })
+    rednet.send(vars.API_SERVER, { method="deposit" })
     local _, message = rednet.receive(nil, 5)
     return message
 end

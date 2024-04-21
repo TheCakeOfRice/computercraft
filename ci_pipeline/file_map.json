@@ -1,4 +1,11 @@
 {
+    "APIServer": [
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_base64.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_cd.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/funcs.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/startup.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/vars.lua?ref=implement-queueing"
+    ],
     "iPad": [
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_base64.lua?ref=implement-queueing",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_cd.lua?ref=implement-queueing",

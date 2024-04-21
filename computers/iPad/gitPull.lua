@@ -12,9 +12,9 @@ fileMap = textutils.unserializeJSON(fileMap)
 -- update files on iPad
 local pulled = cd.updateFiles("iPad", fileMap)
 
--- ping StorageCPU to initate a pull request from each network PC
+-- ping APIServer to initate a pull request from each network PC
 rednet.open("back")
-rednet.send(vars.STORAGE_CPU, { method="gitPull", fileMap=fileMap })
+rednet.send(vars.API_SERVER, { method="gitPull", fileMap=fileMap })
 local _, message = rednet.receive(nil, 10)
 print(message)
 

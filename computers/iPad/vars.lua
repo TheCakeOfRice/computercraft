@@ -1,5 +1,5 @@
 local vars = {
-    STORAGE_CPU = 1
+    API_SERVER = 16
 }
 
 return vars

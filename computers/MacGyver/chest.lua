@@ -3,7 +3,7 @@ local recipes = require("recipes")
 
 for i=1, 9 do
     if recipes.CHEST[i] then
-        rednet.send(vars.STORAGE_CPU, { method="export", item=recipes.CHEST[i], count=1, target=vars.CRAFTING_CHEST, toSlot=i })
+        rednet.send(vars.API_SERVER, { method="export", item=recipes.CHEST[i], count=1, target=vars.CRAFTING_CHEST, toSlot=i })
         local _, message = rednet.receive(nil, 5)
         print(tostring(i)..": "..tostring(message))
 
