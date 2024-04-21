@@ -1,0 +1,10 @@
+repos:
+ # Update file_map.json as part of CI pipeline
+ - repo: local
+   hooks:
+    - id: ci_pipeline
+      name: ci_pipeline
+      entry: python ./ci_pipeline/ci.py
+      language: python
+      always_run: true
+      additional_dependencies: [pygit2]
