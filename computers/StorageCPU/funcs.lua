@@ -62,7 +62,8 @@ local function withdraw(itemName, itemCount)
             for slot, item in pairs(chest.list()) do
                 if leftToMove > 0 then
                     if item.name == itemName then
-                        numMoved = numMoved + chest.pushItems(vars.WITHDRAWAL_CHEST, slot, leftToMove)
+                        local numToMove = math.min(leftToMove, chest.getItemDetail(slot).maxCount)
+                        numMoved = numMoved + chest.pushItems(vars.WITHDRAWAL_CHEST, slot, numToMove)
                         leftToMove = leftToMove - numMoved
                     end
                 end
