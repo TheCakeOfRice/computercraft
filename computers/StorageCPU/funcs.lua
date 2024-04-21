@@ -34,7 +34,7 @@ function funcs.getInventory()
     local inventory = {}
     local indexMap = {}
     local chests = funcs.getChests()
-    for _, chest in ipairs(chests) do
+    for _, chest in pairs(chests) do
         for _, item in pairs(chest.list()) do
             if indexMap[item.name] then
                 inventory[indexMap[item.name]].count = inventory[indexMap[item.name]].count + item.count
@@ -56,7 +56,7 @@ end
 local function withdraw(itemName, itemCount)
     local leftToMove = itemCount
     local chests = funcs.getChests()
-    for _, chest in ipairs(chests) do
+    for _, chest in pairs(chests) do
         if leftToMove > 0 then
             for slot, item in pairs(chest.list()) do
                 if leftToMove > 0 then
@@ -137,11 +137,10 @@ function funcs.deposit()
     depositChest = peripheral.wrap(vars.DEPOSIT_CHEST)
     local chests = funcs.getChests()
     for slot, item in pairs(depositChest.list()) do
-        local numMoved = 0 
         local leftToMove = item.count
-        for _, chest in ipairs(chests) do
+        for _, chest in pairs(chests) do
             if leftToMove > 0 then
-                numMoved = numMoved + depositChest.pushItems(peripheral.getName(chest), slot, leftToMove)
+                local numMoved = depositChest.pushItems(peripheral.getName(chest), slot, item.count)
                 leftToMove = leftToMove - numMoved
             end
         end

@@ -5,19 +5,19 @@ local funcs = {}
 -- API calls
 function funcs.inventory()
     rednet.send(vars.STORAGE_CPU, { method="inventory" })
-    local _, message = rednet.receive(nil, 5)
+    local _, message = rednet.receive(nil, 3)
     return message
 end
 
 function funcs.get(item, count)
     rednet.send(vars.STORAGE_CPU, { method="get", item=item, count=count })
-    local _, message = rednet.receive(nil, 5)
+    local _, message = rednet.receive(nil, 3)
     return message
 end
 
 function funcs.depositLastRow()
     rednet.send(vars.STORAGE_CPU, { method="depositLastRow" })
-    local _, message = rednet.receive(nil, 5)
+    local _, message = rednet.receive(nil, 3)
     return message
 end
 
@@ -53,10 +53,10 @@ function funcs.search(inv, searchTerm)
     end
 
     newInv = {}
-    for _, item in ipairs(inv) do
+    for _, item in pairs(inv) do
         -- checking for mod match
         local modMatch = true
-        for _, modTerm in ipairs(modTerms) do
+        for _, modTerm in pairs(modTerms) do
             if not string.find(string.lower(item.mod), modTerm) then
                 modMatch = false
             end
@@ -64,7 +64,7 @@ function funcs.search(inv, searchTerm)
 
         -- checking for item match
         local itemMatch = true
-        for _, itemTerm in ipairs(itemTerms) do
+        for _, itemTerm in pairs(itemTerms) do
             if not string.find(string.lower(item.displayName), itemTerm) then
                 itemMatch = false
             end
