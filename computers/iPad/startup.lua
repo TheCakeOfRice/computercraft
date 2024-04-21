@@ -53,8 +53,11 @@ while true do
 
                 -- deposit was clicked
                 else
-                    if funcs.depositLastRow() then
+                    local depositSuccess = funcs.depositLastRow()
+                    if depositSuccess then
                         gui.drawSuccess()
+                    elseif depositSuccess == nil then
+                        gui.drawTimedOut()
                     else
                         gui.drawFailed()
                     end

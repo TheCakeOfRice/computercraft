@@ -4,20 +4,20 @@ local funcs = {}
 
 -- API calls
 function funcs.inventory()
-    rednet.send(vars.STORAGE_CPU, { method="inventory" })
-    local _, message = rednet.receive(nil, 5)
+    rednet.send(vars.API_SERVER, { method="inventory" })
+    local _, message = rednet.receive(nil, 100)
     return message
 end
 
 function funcs.get(item, count)
-    rednet.send(vars.STORAGE_CPU, { method="get", item=item, count=count })
-    local _, message = rednet.receive(nil, 5)
+    rednet.send(vars.API_SERVER, { method="get", item=item, count=count })
+    local _, message = rednet.receive(nil, 100)
     return message
 end
 
 function funcs.depositLastRow()
-    rednet.send(vars.STORAGE_CPU, { method="depositLastRow" })
-    local _, message = rednet.receive(nil, 5)
+    rednet.send(vars.API_SERVER, { method="depositLastRow" })
+    local _, message = rednet.receive(nil, 100)
     return message
 end
 
