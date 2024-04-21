@@ -56,7 +56,7 @@ end
 function gui.drawSuccess()
     term.setCursorPos(1, 20)
     term.clearLine()
-    term.write("       ")
+    term.write("        ")
     term.blit(" Success! ", "0000000000", "dddddddddd")
     os.sleep(0.2)
 end
@@ -64,8 +64,16 @@ end
 function gui.drawFailed()
     term.setCursorPos(1, 20)
     term.clearLine()
-    term.write("       ")
+    term.write("         ")
     term.blit(" Failed ", "00000000", "eeeeeeee")
+    os.sleep(0.2)
+end
+
+function gui.drawTimedOut()
+    term.setCursorPos(1, 20)
+    term.clearLine()
+    term.write("       ")
+    term.blit(" Timed Out ", "00000000000", "eeeeeeeeeee")
     os.sleep(0.2)
 end
 

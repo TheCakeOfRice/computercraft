@@ -1,34 +1,34 @@
 {
     "iPad": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_base64.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_cd.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/cd_catalyst.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/funcs.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gitPull.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gui.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/startup.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/vars.lua?ref=mulungus-server"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_base64.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_cd.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/cd_catalyst.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/funcs.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gitPull.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gui.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/startup.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/vars.lua?ref=implement-queueing"
     ],
     "MacGyver": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_base64.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_cd.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/chest.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/recipes.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/startup.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/vars.lua?ref=mulungus-server"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_base64.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_cd.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/chest.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/recipes.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/startup.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/vars.lua?ref=implement-queueing"
     ],
     "PowerCPU": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_base64.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_cd.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/funcs.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/startup.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/vars.lua?ref=mulungus-server"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_base64.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_cd.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/funcs.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/startup.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/vars.lua?ref=implement-queueing"
     ],
     "StorageCPU": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_base64.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_cd.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/funcs.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/startup.lua?ref=mulungus-server",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/vars.lua?ref=mulungus-server"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_base64.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_cd.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/funcs.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/startup.lua?ref=implement-queueing",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/vars.lua?ref=implement-queueing"
     ]
 }
