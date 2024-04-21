@@ -70,6 +70,9 @@ local function withdraw(itemName, itemCount)
                     if slotCount == numMoved then
                         table.remove(funcs.inventory[itemName].locatedAt[chestName], i)
                     end
+                    if funcs.inventory[itemName].count == 0 then
+                        funcs.inventory[itemName] = nil
+                    end
                     leftToMove = leftToMove - numMoved
                 end
             end
@@ -145,6 +148,16 @@ local function tableContains(tbl, val)
     return false
 end
 
+local function union(t1, t2)
+    local merge = t1
+    for _, value in ipairs(t2) do
+        if not tableContains(t1, value) then
+            merge[#merge + 1] = value
+        end
+    end
+    return merge
+end
+
 -- import from deposit chest, returns bool
 function funcs.deposit()
     depositChest = peripheral.wrap(vars.DEPOSIT_CHEST)
@@ -156,23 +169,24 @@ function funcs.deposit()
                 local numMoved = depositChest.pushItems(chestName, slot, item.count)
 
                 -- update counts
-                for slot, item in pairs(chest.list()) do
-                    if funcs.inventory[item.name] then
-                        funcs.inventory[item.name].count = funcs.inventory[item.name].count + numMoved
-                        if funcs.inventory[item.name].locatedAt[chestName] then
-                            if not tableContains(funcs.inventory[item.name].locatedAt[chestName], slot) then
-                                funcs.inventory[item.name].locatedAt[chestName][#funcs.inventory[item.name].locatedAt[chestName] + 1] = slot
-                            end
-                        else
-                            funcs.inventory[item.name].locatedAt[chestName] = { slot }
-                        end
-                    else
-                        local modName = string.match(item.name, "(.+):")
-                        -- local displayName = string.match(item.name, ".+:(.+)")
-                        local displayName = chest.getItemDetail(slot).displayName
-                        local locatedAt = { [chestName]={ slot }}
-                        funcs.inventory[item.name] = { name=item.name, count=item.count, mod=modName, displayName=displayName, locatedAt=locatedAt }
+                local destLocatedAt = {}
+                for destSlot, destItem in pairs(chest.list()) do
+                    if destItem.name == item.name then
+                        destLocatedAt[#destLocatedAt + 1] = destSlot
                     end
+                end
+                if funcs.inventory[item.name] then
+                    funcs.inventory[item.name].count = funcs.inventory[item.name].count + numMoved
+                    if funcs.inventory[item.name].locatedAt[chestName] then
+                        funcs.inventory[item.name].locatedAt[chestName] = union(funcs.inventory[item.name].locatedAt[chestName], destLocatedAt)
+                    else
+                        funcs.inventory[item.name].locatedAt[chestName] = destLocatedAt
+                    end
+                else
+                    local modName = string.match(item.name, "(.+):")
+                    -- local displayName = string.match(item.name, ".+:(.+)")
+                    local displayName = chest.getItemDetail(slot).displayName
+                    funcs.inventory[item.name] = { name=item.name, count=numMoved, mod=modName, displayName=displayName, locatedAt=destLocatedAt }
                 end
                 leftToMove = leftToMove - numMoved
             end
