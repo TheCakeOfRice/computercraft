@@ -10,7 +10,7 @@ while true do
     if message then
         if message.method == "inventory" then
             print("Received 'inventory'.")
-            local inv = funcs.inventory
+            local inv = funcs.getInventory()
             rednet.send(cpu, inv)
         elseif message.method == "get" then
             print("Received 'get "..message.item.." "..tostring(message.count).."'.")

@@ -58,7 +58,6 @@ function gui.drawSuccess()
     term.clearLine()
     term.write("       ")
     term.blit(" Success! ", "0000000000", "dddddddddd")
-    os.sleep(0.2)
 end
 
 function gui.drawFailed()
@@ -66,7 +65,6 @@ function gui.drawFailed()
     term.clearLine()
     term.write("       ")
     term.blit(" Failed ", "00000000", "eeeeeeee")
-    os.sleep(0.2)
 end
 
 function gui.drawQuantityPrompt()

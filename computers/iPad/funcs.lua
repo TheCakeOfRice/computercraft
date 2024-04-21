@@ -5,33 +5,19 @@ local funcs = {}
 -- API calls
 function funcs.inventory()
     rednet.send(vars.STORAGE_CPU, { method="inventory" })
-    local _, inv = rednet.receive(nil, 3)
-
-    if not inv then
-        return false
-    end
-
-    -- converts inventory data into format expected by the iPad GUI
-    local guiInv = {}
-    for _, item in pairs(inv) do
-        guiInv[#guiInv + 1] = item
-    end
-
-    -- sorting
-    table.sort(guiInv, function (item1, item2) return item1.count > item2.count end )
-    
-    return guiInv
+    local _, message = rednet.receive(nil, 5)
+    return message
 end
 
 function funcs.get(item, count)
     rednet.send(vars.STORAGE_CPU, { method="get", item=item, count=count })
-    local _, message = rednet.receive(nil, 3)
+    local _, message = rednet.receive(nil, 5)
     return message
 end
 
 function funcs.depositLastRow()
     rednet.send(vars.STORAGE_CPU, { method="depositLastRow" })
-    local _, message = rednet.receive(nil, 7)
+    local _, message = rednet.receive(nil, 5)
     return message
 end
 

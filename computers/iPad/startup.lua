@@ -17,14 +17,10 @@ while true do
         if event == "mouse_click" then
             -- inventory was clicked
             if y <= 10 then
+                state = "inv"
                 inv = funcs.inventory()
-                if inv then
-                    state = "inv"
-                    scroll_y = 1
-                    gui.drawInv(inv, scroll_y)
-                else
-                    gui.drawFailed()
-                end
+                scroll_y = 1
+                gui.drawInv(inv, scroll_y)
 
             -- git pull was clicked
             else
