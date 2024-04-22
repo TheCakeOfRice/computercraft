@@ -55,7 +55,7 @@ for _, chest in ipairs(funcs.chests) do
 
         -- slot is empty
         if item == nil then
-            append(funcs.openSlots[chestName], slot)
+            funcs.openSlots[chestName] = append(funcs.openSlots[chestName], slot)
 
         else
             -- item has already been observed
@@ -64,7 +64,7 @@ for _, chest in ipairs(funcs.chests) do
                 
                 -- item has already been observed in this chest
                 if funcs.inventory[item.name].locatedAt[chestName] then
-                    append(funcs.inventory[item.name].locatedAt[chestName], slot)
+                    funcs.inventory[item.name].locatedAt[chestName] = append(funcs.inventory[item.name].locatedAt[chestName], slot)
                 
                 -- item has not been observed in this chest
                 else
@@ -119,7 +119,7 @@ local function withdraw(itemName, itemCount)
                     -- add slot to open slot list if it was freed up
                     if wasSlotCleared then
                         funcs.inventory[itemName].locatedAt[chestName][i] = nil
-                        append(funcs.openSlots[chestName], slot)
+                        funcs.openSlots[chestName] = append(funcs.openSlots[chestName], slot)
                     end
                 end
             end
@@ -223,7 +223,7 @@ function funcs.deposit()
                         if not funcs.inventory[item.name].locatedAt[chestName] then
                             funcs.inventory[item.name].locatedAt[chestName] = { toSlot }
                         else
-                            append(funcs.inventory[item.name].locatedAt[chestName], toSlot)
+                            funcs.inventory[item.name].locatedAt[chestName] = append(funcs.inventory[item.name].locatedAt[chestName], toSlot)
                         end
 
                         -- remove toSlot from open slots list if able
