@@ -89,6 +89,15 @@ for _, chest in ipairs(funcs.chests) do
     end
 end
 
+-- prints for debugging
+local item = funcs.inventory["minecraft:cobblestone"]
+print("Name: "..item.name)
+print("Count: "..tostring(item.count))
+print("Located At: "..tostring(item.locatedAt))
+
+print("Chest 17 has open slots at:")
+print(funcs.openSlots["minecraft:chest_17"])
+
 -- #######
 -- Core functions
 -- #######
