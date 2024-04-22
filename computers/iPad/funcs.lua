@@ -6,7 +6,17 @@ local funcs = {}
 function funcs.inventory()
     rednet.send(vars.API_SERVER, { method="inventory" })
     local _, message = rednet.receive(nil, 100)
-    return message
+
+    -- re-index by integer instead of item name
+    local indexedInventory = {}
+    for _, item in pairs(message) do
+        indexedInventory[#indexedInventory + 1] = item
+    end
+
+    -- sort by count
+    table.sort(indexedInventory, function (item1, item2) return item1.count > item2.count end)
+
+    return indexedInventory
 end
 
 function funcs.get(item, count)

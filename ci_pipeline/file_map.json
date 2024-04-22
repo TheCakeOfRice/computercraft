@@ -1,41 +1,41 @@
 {
     "APIServer": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_base64.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_cd.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/funcs.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/startup.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/vars.lua?ref=master"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_base64.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_cd.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/funcs.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/startup.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/vars.lua?ref=caching"
     ],
     "iPad": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_base64.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_cd.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/cd_catalyst.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/funcs.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gitPull.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gui.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/startup.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/vars.lua?ref=master"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_base64.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_cd.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/cd_catalyst.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/funcs.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gitPull.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gui.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/startup.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/vars.lua?ref=caching"
     ],
     "MacGyver": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_base64.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_cd.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/chest.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/recipes.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/startup.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/vars.lua?ref=master"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_base64.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_cd.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/chest.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/recipes.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/startup.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/vars.lua?ref=caching"
     ],
     "PowerCPU": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_base64.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_cd.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/funcs.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/startup.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/vars.lua?ref=master"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_base64.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_cd.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/funcs.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/startup.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/vars.lua?ref=caching"
     ],
     "StorageCPU": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_base64.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_cd.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/funcs.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/startup.lua?ref=master",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/vars.lua?ref=master"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_base64.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_cd.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/funcs.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/startup.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/vars.lua?ref=caching"
     ]
 }
