@@ -41,11 +41,13 @@ end
 -- #######
 
 -- build chest list (requires restart to detect new chests)
+print("Building chest list...")
 for _, type in pairs(vars.CHEST_TYPES) do
     funcs.chests = funcs.concat(funcs.chests, { peripheral.find(type, funcs.ignoreNamedChests) })
 end
 
 -- build inventory, note open slots
+print("Building inventory cache...")
 for _, chest in ipairs(funcs.chests) do
     local chestName = peripheral.getName(chest)
     funcs.openSlots[chestName] = {}
