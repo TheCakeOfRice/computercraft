@@ -95,8 +95,8 @@ print("Name: "..item.name)
 print("Count: "..tostring(item.count))
 print("Located At: "..tostring(item.locatedAt))
 
-print("Chest 17 has open slots at:")
-print(funcs.openSlots["minecraft:chest_17"])
+print("Chest 0 has open slots at:")
+print(funcs.openSlots["sophisticatedstorage:chest_0"])
 
 -- #######
 -- Core functions
