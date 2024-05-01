@@ -1,5 +1,5 @@
 local vars = {
-    API_SERVER = 16
+    API_SERVER = 2
 }
 
 return vars

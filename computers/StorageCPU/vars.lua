@@ -1,24 +1,21 @@
 local vars = {
-    API_SERVER = 16,
-    ENDER_MODEM_SIDE = "right",
-    WIRED_MODEM_SIDE = "back", -- this connects to the chest network/other cpus
-    DEPOSIT_CHEST = "minecraft:chest_11", -- should be on left of inventory manager
-    WITHDRAWAL_CHEST = "minecraft:chest_10", -- should be on right of inventory manager
+    API_SERVER = 2,
+    ENDER_MODEM_SIDE = "back",
+    WIRED_MODEM_SIDE = "bottom", -- this connects to the chest network/other cpus
+    DEPOSIT_CHEST = "minecraft:chest_1", -- should be on left of inventory manager
+    WITHDRAWAL_CHEST = "minecraft:chest_0", -- should be on right of inventory manager
     CRAFTING_CHEST = "minecraft:chest_16", -- should be in front of MacGyver the crafty turtle
-    INVENTORY_MANAGER = "inventoryManager_1",
+    INVENTORY_MANAGER = "inventoryManager_0",
     CHEST_TYPES = {
         "minecraft:chest",
-        "functionalstorage:spruce_1"
+        "functionalstorage:spruce_1",
+        "sophisticatedstorage:chest"
     }
 }
 vars.BLACKLIST = {
     vars.DEPOSIT_CHEST,
     vars.WITHDRAWAL_CHEST,
-    vars.CRAFTING_CHEST,
-    "minecraft:chest_30", -- wheat seed sower
-    "minecraft:chest_31", -- tomato seed sower
-    "minecraft:chest_32", -- onion sower
-    "minecraft:chest_33" -- cabbage seed sower
+    vars.CRAFTING_CHEST
 }
 
 return vars
