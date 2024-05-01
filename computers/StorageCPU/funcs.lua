@@ -94,7 +94,7 @@ function funcs.sendToPlayer(itemName, itemCount)
         print("funcs.sendToPlayer: Inventory manager could not be found!")
         return false
     else
-        local numMoved = invMgr.addItemToPlayer("right", itemCount, nil, itemName)
+        local numMoved = invMgr.addItemToPlayer("right", { name=itemName, count=itemCount })
         if numMoved == itemCount then
             return true
         else
@@ -162,7 +162,7 @@ function funcs.depositLastRow()
         local invMgr = peripheral.wrap(vars.INVENTORY_MANAGER)
         for _, item in pairs(invMgr.getItems()) do
             if item.slot >= 27 and item.slot <= 35 then
-                invMgr.removeItemFromPlayerNBT("left", item.count, nil, { fromSlot=item.slot })
+                invMgr.removeItemFromPlayerNBT("left", { count=item.count, fromSlot=item.slot })
             end
         end
         -- deposit from deposit chest
