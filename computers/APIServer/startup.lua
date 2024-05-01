@@ -4,7 +4,7 @@ local cd = require("_cd_pipeline._cd")
 
 local queue = {}
 
-rednet.open("right")
+rednet.open(vars.ENDER_MODEM_SIDE)
 print("Listening for rednet messages...")
 while true do
     local cpu, message = rednet.receive(nil, 60)
