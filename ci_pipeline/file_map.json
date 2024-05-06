@@ -3,6 +3,7 @@
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_base64.lua?ref=monitors",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_cd.lua?ref=monitors",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/funcs.lua?ref=monitors",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/monitor.lua?ref=monitors",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/startup.lua?ref=monitors",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/vars.lua?ref=monitors"
     ],
