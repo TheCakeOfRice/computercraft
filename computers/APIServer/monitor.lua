@@ -19,11 +19,15 @@ function monitor.drawQueue(queue)
     local m = peripheral.wrap(vars.MONITOR)
     local w, h = m.getSize()
     m.clear()
-    m.setCursorPos(1, 1)
+    if math.floor(w / 2) - 14 > 0 then
+        m.setCursorPos(math.floor(w / 2) - 14, 1)
+    else
+        m.setCursorPos(1, 1)
+    end
     m.write("== QUEUE FOR API REQUESTS ==")
     for i, call in ipairs(queue) do
         if i >= 1 and i < h then
-            local line = "  - " .. forceLength(call.method, 10) .. " FROM " .. tostring(call.cpu)
+            local line = "  - " .. forceLength(call.method, math.floor(w / 2)) .. " FROM " .. tostring(call.cpu)
             if #line > w then
                 line = string.sub(line, 1, w)
             end
