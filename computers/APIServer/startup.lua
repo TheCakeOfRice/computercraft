@@ -1,5 +1,6 @@
 local vars = require("vars")
 local funcs = require("funcs")
+local monitor = require("monitor")
 local cd = require("_cd_pipeline._cd")
 
 local queue = {}
@@ -34,4 +35,5 @@ while true do
         funcs.enqueue(queue, cpu, message)
         print(" -- queueing "..message.method)
     end
+    monitor.drawQueue(queue)
 end
