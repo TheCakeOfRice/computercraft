@@ -16,7 +16,7 @@ local function forceLength(str, len)
 end
 
 function monitor.drawQueue(queue)
-    local m = peripheral.wrap(vars.MONITOR_SIDE)
+    local m = peripheral.wrap(vars.MONITOR)
     local w, h = m.getSize()
     m.clear()
     m.setCursorPos(1, 1)

@@ -3,7 +3,7 @@ local vars = {
     IPAD = 0,
     POWER_CPU = 5,
     ENDER_MODEM_SIDE = "back",
-    MONITOR_SIDE = "top"
+    MONITOR = "top"
 }
 vars.PRIORITY_MAP = {
     vars.IPAD,

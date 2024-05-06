@@ -18,7 +18,7 @@ local function stringifyCount(count)
 end
 
 function monitor.drawInv(inv)
-    local m = peripheral.wrap(vars.MONITOR_SIDE)
+    local m = peripheral.wrap(vars.MONITOR)
     local w, h = m.getSize()
     m.clear()
     for i, item in ipairs(inv) do
