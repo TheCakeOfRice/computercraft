@@ -27,12 +27,12 @@ function monitor.drawQueue(queue)
     m.write("== QUEUE FOR API REQUESTS ==")
     for i, call in ipairs(queue) do
         if i >= 1 and i < h then
-            local line = "  - " .. forceLength(call.method, math.floor(w / 2)) .. " FROM " .. tostring(call.cpu)
-            if #line > w then
+            local line = "  - " .. forceLength(call.method, math.floor(w / 3)) .. " FROM " .. tostring(call.cpu)
+            if #line > w - math.floor(w / 3) then
                 line = string.sub(line, 1, w)
             end
 
-            m.setCursorPos(1, i + 1)
+            m.setCursorPos(math.floor(w / 3), i + 1)
             m.write(line)
         end
     end
