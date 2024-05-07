@@ -1,43 +1,43 @@
 {
     "APIServer": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_base64.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_cd.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/funcs.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/monitor.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/startup.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/vars.lua?ref=monitors"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_base64.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_cd.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/funcs.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/monitor.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/startup.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/vars.lua?ref=efficiency"
     ],
     "iPad": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_base64.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_cd.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/cd_catalyst.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/funcs.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gitPull.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gui.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/startup.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/vars.lua?ref=monitors"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_base64.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/_cd_pipeline/_cd.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/cd_catalyst.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/funcs.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gitPull.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/gui.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/startup.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/iPad/vars.lua?ref=efficiency"
     ],
     "MacGyver": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_base64.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_cd.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/chest.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/recipes.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/startup.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/vars.lua?ref=monitors"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_base64.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/_cd_pipeline/_cd.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/chest.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/recipes.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/startup.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/MacGyver/vars.lua?ref=efficiency"
     ],
     "PowerCPU": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_base64.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_cd.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/funcs.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/startup.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/vars.lua?ref=monitors"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_base64.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/_cd_pipeline/_cd.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/funcs.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/startup.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/PowerCPU/vars.lua?ref=efficiency"
     ],
     "StorageCPU": [
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_base64.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_cd.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/funcs.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/monitor.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/startup.lua?ref=monitors",
-        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/vars.lua?ref=monitors"
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_base64.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_cd.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/funcs.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/monitor.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/startup.lua?ref=efficiency",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/vars.lua?ref=efficiency"
     ]
 }
