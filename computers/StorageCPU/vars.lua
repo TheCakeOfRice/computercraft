@@ -10,7 +10,11 @@ local vars = {
     CHEST_TYPES = {
         "minecraft:chest",
         "functionalstorage:spruce_1",
-        "sophisticatedstorage:chest"
+        "sophisticatedstorage:chest",
+        "sophisticatedstorage:iron_chest",
+        "sophisticatedstorage:gold_chest",
+        "sophisticatedstorage:diamond_chest",
+        "sophisticatedstorage:netherite_chest"
     }
 }
 vars.BLACKLIST = {
