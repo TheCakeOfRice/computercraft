@@ -54,7 +54,8 @@ function funcs.getInventory()
 end
 
 -- returns bool
-local function withdraw(itemName, itemCount)
+local function withdraw(itemName, itemCount, target)
+    target = target or vars.WITHDRAWAL_CHEST
     local leftToMove = itemCount
     local chests = funcs.getChests()
     for _, chest in ipairs(chests) do
@@ -75,39 +76,40 @@ local function withdraw(itemName, itemCount)
     if leftToMove <= 0 then
         return true
     else
-        print("funcs.withdraw: Only withdrew " .. tostring(itemCount - leftToMove) .. " of " .. tostring(itemCount) .. " items.")
+        print("funcs.withdraw: Only able to withdraw " .. tostring(itemCount - leftToMove) .. " of the requested " .. tostring(itemCount) .. " items.")
         return false
     end
 end
 
--- returns bool
-function funcs.sendToPlayer(itemName, itemCount)
-    -- move items to withdrawal chest
-    if not withdraw(itemName, itemCount) then
-        print("funcs.sendToPlayer: Failed withdrawing items!")
-        return false
-    end
+-- DEPRECATED -- for use with Advanced Peripherals mod
+-- -- returns bool
+-- function funcs.sendToPlayer(itemName, itemCount)
+--     -- move items to withdrawal chest
+--     if not withdraw(itemName, itemCount) then
+--         print("funcs.sendToPlayer: Failed withdrawing items!")
+--         return false
+--     end
 
-    -- add items to player
-    local invMgr = peripheral.wrap(vars.INVENTORY_MANAGER)
-    if not invMgr then
-        print("funcs.sendToPlayer: Inventory manager could not be found!")
-        return false
-    else
-        local numMoved = invMgr.addItemToPlayer("right", { name=itemName, count=itemCount })
-        if numMoved == itemCount then
-            return true
-        else
-            print("funcs.sendToPlayer: Only sent " .. tostring(numMoved) .. " of " .. tostring(itemCount) .. " items.")
-            return false
-        end
-    end
-end
+--     -- add items to player
+--     local invMgr = peripheral.wrap(vars.INVENTORY_MANAGER)
+--     if not invMgr then
+--         print("funcs.sendToPlayer: Inventory manager could not be found!")
+--         return false
+--     else
+--         local numMoved = invMgr.addItemToPlayer("right", { name=itemName, count=itemCount })
+--         if numMoved == itemCount then
+--             return true
+--         else
+--             print("funcs.sendToPlayer: Only sent " .. tostring(numMoved) .. " of " .. tostring(itemCount) .. " items.")
+--             return false
+--         end
+--     end
+-- end
 
 -- returns bool
 function funcs.export(target, itemName, itemCount, toSlot)
     -- move items to withdrawal chest
-    if not withdraw(itemName, itemCount) then
+    if not withdraw(itemName, itemCount, vars.EXPORT_CHEST) then
         print("funcs.export: Failed withdrawing items!")
         return false
     end
@@ -154,22 +156,23 @@ function funcs.deposit()
     return true
 end
 
--- returns bool
-function funcs.depositLastRow()
-    -- clear deposit chest first
-    if funcs.deposit() then
-        -- move items from player to deposit chest
-        local invMgr = peripheral.wrap(vars.INVENTORY_MANAGER)
-        for _, item in pairs(invMgr.getItems()) do
-            if item.slot >= 27 and item.slot <= 35 then
-                invMgr.removeItemFromPlayer("left", { count=item.count, fromSlot=item.slot })
-            end
-        end
-        -- deposit from deposit chest
-        return funcs.deposit()
-    else
-        return false
-    end
-end
+-- DEPRECATED -- for use with Advanced Peripherals mod
+-- -- returns bool
+-- function funcs.depositLastRow()
+--     -- clear deposit chest first
+--     if funcs.deposit() then
+--         -- move items from player to deposit chest
+--         local invMgr = peripheral.wrap(vars.INVENTORY_MANAGER)
+--         for _, item in pairs(invMgr.getItems()) do
+--             if item.slot >= 27 and item.slot <= 35 then
+--                 invMgr.removeItemFromPlayer("left", { count=item.count, fromSlot=item.slot })
+--             end
+--         end
+--         -- deposit from deposit chest
+--         return funcs.deposit()
+--     else
+--         return false
+--     end
+-- end
 
 return funcs
