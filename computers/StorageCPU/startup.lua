@@ -17,10 +17,10 @@ while true do
             rednet.send(message.cpu, inv)
         elseif message.method == "get" then
             print("Executing 'get "..message.item.." "..tostring(message.count).."'.")
-            rednet.send(message.cpu, funcs.withdraw(message.item, message.count, vars.WITHDRAWAL_CHEST))
+            rednet.send(message.cpu, funcs.withdraw(_, message.item, message.count))
         elseif message.method == "export" then
             print("Executing 'export "..message.item.." "..tostring(message.count).."'.")
-            rednet.send(message.cpu, funcs.export(message.target, message.item, message.count, message.toSlot))
+            rednet.send(message.cpu, funcs.withdraw(message.target, message.item, message.count, message.toSlot))
         -- elseif message.method == "depositLastRow" then
         --     print("Executing 'depositLastRow'.")
         --     rednet.send(message.cpu, funcs.depositLastRow())
