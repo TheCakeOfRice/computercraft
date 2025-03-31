@@ -13,17 +13,17 @@ while true do
         if message.method == "inventory" then
             print("Executing 'inventory'.")
             local inv = funcs.getInventory()
-            monitor.drawInv(inv)
+            if monitor then monitor.drawInv(inv) end
             rednet.send(message.cpu, inv)
         elseif message.method == "get" then
             print("Executing 'get "..message.item.." "..tostring(message.count).."'.")
-            rednet.send(message.cpu, funcs.sendToPlayer(message.item, message.count))
+            rednet.send(message.cpu, funcs.withdraw(_, message.item, message.count))
         elseif message.method == "export" then
             print("Executing 'export "..message.item.." "..tostring(message.count).."'.")
-            rednet.send(message.cpu, funcs.export(message.target, message.item, message.count, message.toSlot))
-        elseif message.method == "depositLastRow" then
-            print("Executing 'depositLastRow'.")
-            rednet.send(message.cpu, funcs.depositLastRow())
+            rednet.send(message.cpu, funcs.withdraw(message.target, message.item, message.count, message.toSlot))
+        -- elseif message.method == "depositLastRow" then
+        --     print("Executing 'depositLastRow'.")
+        --     rednet.send(message.cpu, funcs.depositLastRow())
         elseif message.method == "deposit" then
             print("Executing 'deposit'.")
             rednet.send(message.cpu, funcs.deposit())

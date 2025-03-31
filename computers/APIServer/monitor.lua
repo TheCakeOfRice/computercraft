@@ -1,5 +1,8 @@
 local vars = require("vars")
 
+local m = peripheral.wrap(vars.MONITOR)
+if m == nil then return false end
+
 local monitor = {}
 
 local function forceLength(str, len)
@@ -16,7 +19,6 @@ local function forceLength(str, len)
 end
 
 function monitor.drawQueue(queue)
-    local m = peripheral.wrap(vars.MONITOR)
     local w, h = m.getSize()
     m.clear()
     if math.floor(w / 2) - 14 > 0 then

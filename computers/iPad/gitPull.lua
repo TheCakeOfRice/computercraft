@@ -1,4 +1,3 @@
-local vars = require("vars")
 local cd = require("_cd_pipeline._cd")
 local env = require("env")
 
@@ -23,9 +22,13 @@ end
 local pulled = cd.updateFiles("iPad", fileMap)
 
 -- ping APIServer to initate a pull request from each network PC
-rednet.open("back")
-rednet.send(vars.API_SERVER, { method="gitPull", fileMap=fileMap })
-local _, message = rednet.receive(nil, 10)
-print(message)
+local hasVars = fs.exists("vars.lua")
+if hasVars then
+    local vars = require("vars")
+    rednet.open("back")
+    rednet.send(vars.API_SERVER, { method="gitPull", fileMap=fileMap })
+    local _, message = rednet.receive(nil, 10)
+    print(message)
+end
 
 if pulled then os.reboot() end
