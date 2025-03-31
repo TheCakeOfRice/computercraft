@@ -7,7 +7,7 @@ local queue = {}
 
 rednet.open(vars.ENDER_MODEM_SIDE)
 print("Listening for rednet messages...")
-monitor.drawQueue(queue)
+if monitor then monitor.drawQueue(queue) end
 while true do
     local cpu, message = rednet.receive(nil, 60)
     if message then
@@ -16,7 +16,7 @@ while true do
             if next then
                 rednet.send(cpu, next)
                 print(" -- executing "..next.method)
-                monitor.drawQueue(queue)
+                if monitor then monitor.drawQueue(queue) end
             else
                 rednet.send(cpu, false)
             end
@@ -39,7 +39,7 @@ while true do
         else
             funcs.enqueue(queue, cpu, message)
             print(" -- queueing "..message.method)
-            monitor.drawQueue(queue)
+            if monitor then monitor.drawQueue(queue) end
         end
     end
 end
