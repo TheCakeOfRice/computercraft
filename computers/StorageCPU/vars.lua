@@ -2,6 +2,7 @@ local vars = {
     API_SERVER = 2,
     ENDER_MODEM_SIDE = "back",
     WIRED_MODEM_SIDE = "bottom", -- this connects to the chest network/other cpus
+    MONITOR = "top",
     DEPOSIT_CHEST = "minecraft:chest_1", -- should be on left of inventory manager
     WITHDRAWAL_CHEST = "minecraft:chest_0", -- should be on right of inventory manager
     CRAFTING_CHEST = "minecraft:chest_16", -- should be in front of MacGyver the crafty turtle
@@ -9,7 +10,11 @@ local vars = {
     CHEST_TYPES = {
         "minecraft:chest",
         "functionalstorage:spruce_1",
-        "sophisticatedstorage:chest"
+        "sophisticatedstorage:chest",
+        "sophisticatedstorage:iron_chest",
+        "sophisticatedstorage:gold_chest",
+        "sophisticatedstorage:diamond_chest",
+        "sophisticatedstorage:netherite_chest"
     }
 }
 vars.BLACKLIST = {

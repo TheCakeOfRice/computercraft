@@ -3,6 +3,7 @@
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_base64.lua?ref=caching",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/_cd_pipeline/_cd.lua?ref=caching",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/funcs.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/monitor.lua?ref=caching",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/startup.lua?ref=caching",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/APIServer/vars.lua?ref=caching"
     ],
@@ -35,6 +36,7 @@
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_base64.lua?ref=caching",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/_cd_pipeline/_cd.lua?ref=caching",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/funcs.lua?ref=caching",
+        "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/monitor.lua?ref=caching",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/startup.lua?ref=caching",
         "https://api.github.com/repos/TheCakeOfRice/computercraft/contents/computers/StorageCPU/vars.lua?ref=caching"
     ]

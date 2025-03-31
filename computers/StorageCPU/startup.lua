@@ -1,5 +1,6 @@
 local funcs = require("funcs")
 local vars = require("vars")
+local monitor = require("monitor")
 local cd = require("_cd_pipeline._cd")
 
 print("Processing queue from APIServer...")
@@ -11,7 +12,8 @@ while true do
     if message then
         if message.method == "inventory" then
             print("Executing 'inventory'.")
-            local inv = funcs.inventory
+            local inv = funcs.getInventory()
+            monitor.drawInv(inv)
             rednet.send(message.cpu, inv)
         elseif message.method == "get" then
             print("Executing 'get "..message.item.." "..tostring(message.count).."'.")
