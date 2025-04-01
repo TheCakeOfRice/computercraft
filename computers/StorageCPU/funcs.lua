@@ -45,11 +45,13 @@ print("Building chest list...")
 for _, type in pairs(vars.CHEST_TYPES) do
     funcs.chests = funcs.concat(funcs.chests, { peripheral.find(type, funcs.ignoreNamedChests) })
 end
+print("Found " .. tostring(#funcs.chests) .. " storage chests.")
 
 -- build inventory, note open slots
 print("Building inventory cache...")
 for _, chest in ipairs(funcs.chests) do
     local chestName = peripheral.getName(chest)
+    print("...searching "..chestName)
     funcs.openSlots[chestName] = {}
 
     for slot=1, chest.size() do
