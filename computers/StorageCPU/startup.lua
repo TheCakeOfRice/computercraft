@@ -12,7 +12,7 @@ while true do
     if message then
         if message.method == "inventory" then
             print("Executing 'inventory'.")
-            local inv = funcs.getInventory()
+            local inv = funcs.inventory
             if monitor then monitor.drawInv(inv) end
             rednet.send(message.cpu, inv)
         elseif message.method == "get" then
