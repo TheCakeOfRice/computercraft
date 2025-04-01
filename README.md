@@ -28,7 +28,7 @@ return env
 
 You then can begin downloading source files from GitHub.  This is completed in a three-step pull process:
 1. Run `gitPull` from your iPad terminal.  This will download all iPad source files, including `~/cd_catalyst.lua`.
-2. Use your disk drive to `cp disk/cd_catalyst.lua .` on APIServer.  Run `cd_catalyst`.
+2. Use your disk drive to `cp disk/_cd_pipeline .` and `cp disk/cd_catalyst.lua .` on APIServer.  Run `cd_catalyst`.
 3. Run `gitPull` from your iPad terminal again.  This will forward the pull message to APIServer, which is listening for this event as a result of `cd_catalyst`.
-4. Use your disk drive to copy `cd_catalyst` to all other computers in your system that need to pull files from GitHub.  Run the program on them all so that they listen for a pull event.
+4. Use your disk drive to copy `cd` materials to all other computers in your system that need to pull files from GitHub.  Run the program on them all so that they listen for a pull event.
 5. Finally, run `gitPull` one last time from iPad.  APIServer will now know to forward the message to all computers and turtles in the network.
