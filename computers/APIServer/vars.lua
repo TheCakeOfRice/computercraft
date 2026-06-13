@@ -1,8 +1,8 @@
 local vars = {
     STORAGE_CPU = 2,
-    IPAD = 1,
+    IPAD = 0,
     POWER_CPU = 5,
-    ENDER_MODEM_SIDE = "right",
+    ENDER_MODEM_SIDE = "left",
     MONITOR = "top"
 }
 vars.PRIORITY_MAP = {
