@@ -24,7 +24,7 @@ while true do
             rednet.send(cpu, queue)
         elseif message.method == "gitPull" then
             print("Pulling from GitHub...")
-            local pulled = cd.updateFiles("APIServer", message.fileMap)
+            local pulled = cd.updateFiles("APIServer", message.fileMap, message.token)
 
             -- forward pull request
             local cpus = funcs.concat({ peripheral.find("turtle") }, { peripheral.find("computer") })

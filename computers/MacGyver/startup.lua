@@ -6,7 +6,7 @@ while true do
     if message then
         if message.method == "gitPull" then
             print("Pulling from GitHub...")
-            local pulled = cd.updateFiles("MacGyver", message.fileMap)
+            local pulled = cd.updateFiles("MacGyver", message.fileMap, message.token)
             if pulled then os.reboot() end
         end
     end

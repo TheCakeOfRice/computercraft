@@ -29,7 +29,7 @@ while true do
             rednet.send(message.cpu, funcs.deposit())
         elseif message.method == "gitPull" then
             print("Pulling from GitHub...")
-            local pulled = cd.updateFiles("StorageCPU", message.fileMap)
+            local pulled = cd.updateFiles("StorageCPU", message.fileMap, message.token)
             if pulled then os.reboot() end
         end
     end
