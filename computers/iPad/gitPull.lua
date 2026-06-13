@@ -17,7 +17,7 @@ local hasVars = fs.exists("vars.lua")
 if hasVars then
     local vars = require("vars")
     rednet.open("back")
-    rednet.send(vars.API_SERVER, { method="gitPull", fileMap=fileMap })
+    rednet.send(vars.API_SERVER, { method="gitPull", fileMap=fileMap, token=env.GITHUB_API_KEY })
     local _, message = rednet.receive(nil, 10)
     print(message)
 end
