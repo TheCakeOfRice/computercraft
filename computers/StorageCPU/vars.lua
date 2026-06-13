@@ -1,10 +1,10 @@
 local vars = {
-    API_SERVER = 3,
+    API_SERVER = 1,
     ENDER_MODEM_SIDE = "right",
     WIRED_MODEM_SIDE = "back", -- this connects to the chest network/other cpus
     MONITOR = "top",
-    DEPOSIT_CHEST = "minecraft:chest_1", -- should be on left of inventory manager, if using
-    WITHDRAWAL_CHEST = "minecraft:chest_0", -- should be on right of inventory manager, if using
+    DEPOSIT_CHEST = "minecraft:chest_0", -- should be on left of inventory manager, if using
+    WITHDRAWAL_CHEST = "minecraft:chest_1", -- should be on right of inventory manager, if using
     CRAFTING_CHEST = "minecraft:chest_16", -- should be in front of MacGyver the crafty turtle
     INVENTORY_MANAGER = "inventoryManager_0",
     CHEST_TYPES = {
