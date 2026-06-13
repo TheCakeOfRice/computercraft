@@ -13,6 +13,18 @@ while true do
         if message.method == "gitPull" then
             print("Pulling from GitHub...")
             local pulled = cd.updateFiles(os.getComputerLabel(), message.fileMap, message.token)
+            
+            if os.getComputerLabel() == "APIServer" then
+                -- forward pull request
+                local cpus = funcs.concat({ peripheral.find("turtle") }, { peripheral.find("computer") })
+                for _, cpu in ipairs(cpus) do
+                    rednet.send(cpu.getID(), message)
+                end
+
+                -- give feedback to initator
+                rednet.send(cpu, true)
+            end
+
             if pulled then os.reboot() end
         end
     end
