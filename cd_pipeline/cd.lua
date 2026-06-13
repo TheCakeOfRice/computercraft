@@ -1,14 +1,13 @@
 base64 = require("_cd_pipeline._base64")
-env = require("env")
 
 local cd = {}
 
-function cd.getGitHubFile(url)
+function cd.getGitHubFile(url, token)
     local request = {
         url = url,
         method = "GET",
         headers = {
-            ["Authorization"] = "Bearer " .. env.GITHUB_API_KEY,
+            ["Authorization"] = "Bearer " .. token,
             ["Accept"] = "application/vnd.github+json"
         }
     }
@@ -22,7 +21,7 @@ function cd.getGitHubFile(url)
     return body.name, base64.decode(body.content), body.path
 end
 
-function cd.updateFiles(label, fileMap)
+function cd.updateFiles(label, fileMap, token)
     if not fileMap[label] then
         print("File map does not contain the label "..tostring(label))
         return false
@@ -33,7 +32,7 @@ function cd.updateFiles(label, fileMap)
 
     -- get each file and update
     for _, url in pairs(fileMap[label]) do
-        local filename, content, path = cd.getGitHubFile(url)
+        local filename, content, path = cd.getGitHubFile(url, token)
 
         -- check if file is in _cd_pipeline
         local isCDFile = string.find(path, "_cd_pipeline")
