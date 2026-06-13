@@ -1,11 +1,25 @@
 base64 = require("_cd_pipeline._base64")
+env = require("env")
 
 local cd = {}
 
 function cd.getGitHubFile(url)
-    local response = textutils.unserialiseJSON(http.get(url).readAll())
-    print("Got "..tostring(response.name).." from GitHub")
-    return response.name, base64.decode(response.content), response.path
+    local request = {
+        url = url,
+        method = "GET",
+        headers = {
+            ["Authorization"] = "Bearer " .. env.GITHUB_API_KEY,
+            ["Accept"] = "application/vnd.github+json"
+        }
+    }
+    local response = http.get(request)
+    if not response then
+        print("Failed to get "..tostring(url))
+        return nil
+    end
+    local body = textutils.unserialiseJSON(response.readAll())
+    print("Got "..tostring(body.name).." from GitHub")
+    return body.name, base64.decode(body.content), body.path
 end
 
 function cd.updateFiles(label, fileMap)
