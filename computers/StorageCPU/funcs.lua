@@ -106,7 +106,7 @@ function funcs.withdraw(target, itemName, itemCount, toSlot)
     end
 
     local leftToMove = itemCount
-    for _, chestName in ipairs(funcs.inventory[itemName].locatedAt) do
+    for _, chestName in pairs(funcs.inventory[itemName].locatedAt) do
         local chest = peripheral.wrap(chestName)
         if leftToMove > 0 then
             for i, slot in ipairs(funcs.inventory[itemName].locatedAt[chestName]) do
@@ -141,7 +141,7 @@ end
 
 -- import from deposit chest, returns bool
 function funcs.deposit()
-    depositChest = peripheral.wrap(vars.DEPOSIT_CHEST)
+    local depositChest = peripheral.wrap(vars.DEPOSIT_CHEST)
 
     -- loop through deposit chest items
     for fromSlot, _ in pairs(depositChest.list()) do
@@ -163,7 +163,7 @@ function funcs.deposit()
         end
 
         -- find an empty slot and push items there
-        for _, chestName in ipairs(funcs.openSlots) do
+        for _, chestName in pairs(funcs.openSlots) do
             if leftToMove > 0 then
                 for i, toSlot in ipairs(funcs.openSlots[chestName]) do
                     if leftToMove > 0 then
@@ -172,7 +172,7 @@ function funcs.deposit()
                         leftToMove = leftToMove - numMoved
 
                         -- update inventory with change
-                        funcs.inventory[item.name].count = funcs.inventory[itemName].count + numMoved
+                        funcs.inventory[item.name].count = funcs.inventory[item.name].count + numMoved
                         if not funcs.inventory[item.name].locatedAt[chestName] then
                             funcs.inventory[item.name].locatedAt[chestName] = { toSlot }
                         else
