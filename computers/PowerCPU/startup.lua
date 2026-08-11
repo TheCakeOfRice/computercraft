@@ -1,8 +1,7 @@
 local funcs = require("funcs")
 local vars = require("vars")
-local cd = require("_cd_pipeline._cd")
 
-rednet.open(vars.WIRED_MODEM_SIDE)
+peripheral.find("modem", rednet.open)
 
 local generators = funcs.getAll(vars.GENERATOR_TYPE)
 local furnaces = funcs.getAll(vars.FURNACE_TYPE)
@@ -19,7 +18,7 @@ print("Starting main loop...")
 while true do
     -- fill all generators
     for _, generator in pairs(generators) do
-        if #generator.list() == 0 then
+        if next(generator.peripheral.list()) == nil then
             funcs.callExport("minecraft:blaze_rod", 64, generator.name)
         end
     end
@@ -27,35 +26,28 @@ while true do
     -- deposit all furnaces
     local needsDeposit = false
     for _, furnace in pairs(furnaces) do
-        if furnace.list()[2] ~= nil then
-            furnace.pushItems(vars.DEPOSIT_CHEST, 2)
+        if furnace.peripheral.list()[2] ~= nil then
+            furnace.peripheral.pushItems(vars.DEPOSIT_CHEST, 2)
             needsDeposit = true
         end
     end
     if needsDeposit then
-        funcs.callDeposit()
+        funcs.callDeposit(vars.DEPOSIT_CHEST)
     end
 
     -- fill all placers
     for _, placer in pairs(placers) do
-        if #placer.list() == 0 then
+        if next(placer.peripheral.list()) == nil then
             funcs.callExport("minecraft:dark_oak_log", 5, placer.name)
         end
     end
 
     -- fill all sowers
     for _, sower in pairs(sowers) do
-        if #sower.list() == 0 then
+        if next(sower.list()) == nil then
             funcs.callExport(vars.SOWER_SEED_MAP[sower.name], 64, sower.name)
         end
     end
 
-    local _, message = rednet.receive(nil, 10)
-    if message then
-        if message.method == "gitPull" then
-            print("Pulling from GitHub...")
-            local pulled = cd.updateFiles("PowerCPU", message.fileMap, message.token)
-            if pulled then os.reboot() end
-        end
-    end
+    sleep(10)
 end

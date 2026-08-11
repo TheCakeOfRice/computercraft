@@ -7,4 +7,4 @@ repos:
       entry: python ./ci_pipeline/ci.py
       language: python
       always_run: true
-      additional_dependencies: [pygit2]
+      pass_filenames: false

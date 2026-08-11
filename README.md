@@ -1,35 +1,91 @@
-# Intro
-Contains code using the computercraft API for minecraft.  Implements a storage system centered around a computer (StorageCPU) and an advanced ender pocket computer (iPad) as an interface.
+# CC Storage
 
-Python pre-commits are used to stage GitHub API URLs in ci_pipeline/file_map.json for import using the in-game cd_pipeline.  Access "git pull" from the iPad to pull latest changes from GitHub.
+A CC:Tweaked storage and autocrafting platform for Minecraft. A single storage
+computer owns the inventory cache, client API, durable crafting queue, worker
+registry, and software cache. Pocket computers and automation workers discover
+it through Rednet instead of relying on fixed computer IDs.
 
-# Minimum requirements
-- Advanced Ender Pocket Computer -- labeled *iPad*
-- Two computers -- labeled *StorageCPU* and *APIServer*
-- Two ender modems -- one for each computer
-- Networking cable and modems to connect the computers to chests
-- One reserved chest which will be used as a player interface -- *recommended: ender chest*
-- A disk drive
+## Minimum build
 
-# Setup
-To jump-start your system, you need to upload a few files to Pastebin and then `pastebin get` them on your iPad.
-- `~/gitPull.lua`
-- `~/_cd_pipeline/_base64.lua`
-- `~/_cd_pipeline/_cd.lua`
+- One advanced computer for the storage/coordinator service.
+- A wired modem and cable connecting it to storage inventories.
+- A wireless or ender modem when using a remote pocket computer.
+- Separate deposit and withdrawal inventories.
+- An optional monitor.
 
-You will also need to create a file `~/env.lua` which contains a GitHub personal access token, for use as a GitHub API key.
-<blockquote>
-local env = {
-    GITHUB_API_KEY = "your_token_here"
-}
+APIServer is no longer a required computer. Its responsibilities have moved
+into StorageCPU and remain isolated in coordinator modules so they can be split
+onto another computer later if scale requires it.
 
-return env
-</blockquote>
+## Install
 
-On your working branch, make sure that your `vars.lua` files accurately represent ids for your in-game setup, or else connections between computers will not work.
+On the first storage computer, download the small public bootstrap and run it:
 
-You then can begin downloading source files from GitHub.  This is completed in a two-step pull process:
-1. Run `gitPull <branchname>` from your iPad terminal.  This will download all iPad source files, including `~/cd_catalyst.lua`.
-2. Use your disk drive to `cp disk/_cd_pipeline .` and `cp disk/cd_catalyst.lua .` on all other computers in your network that need to pull files from GitHub.  Run `cd_catalyst` to start listening for requests.
-3. Run `gitPull` from your iPad terminal again.  This will forward the pull message to APIServer, which is listening for this event as a result of `cd_catalyst`.
-4. APIServer will forward the message to all computers and turtles in the network, triggering setup.
+```text
+wget https://raw.githubusercontent.com/TheCakeOfRice/computercraft/master/install.lua install
+install StorageCPU
+```
+
+The setup wizard discovers modems and inventories, asks which inventories are
+deposit and withdrawal, and stores world-specific configuration in
+`/cc-storage/config.json`. Source files contain no computer IDs, peripheral
+sides, or GitHub credentials.
+
+Install a pocket or worker with the corresponding role:
+
+```text
+install iPad
+install MacGyver
+install PowerCPU
+```
+
+Once the storage server has cached role bundles, an already-downloaded
+bootstrap can provision from the Minecraft network without contacting GitHub:
+
+```text
+install MacGyver network
+```
+
+For a completely zero-download new computer, modpack/server owners may ship
+`install.lua` as a custom ROM program. Vanilla CC:Tweaked cannot remotely write
+to a blank computer before some bootstrap program is run.
+
+## Operations
+
+Run these on the storage computer:
+
+```text
+storage doctor
+storage configure
+storage rescan
+storage jobs
+storage craft minecraft:chest 4
+storage update
+storage rollback
+```
+
+`storage update` downloads one generated bundle per role, installs the server
+bundle atomically, and caches worker/client bundles for network provisioning.
+Only the storage server needs GitHub access.
+
+## Runtime design
+
+- `inventory.lua` discovers generic inventory peripherals, scans with one
+  `list()` call per inventory, caches display details, and periodically
+  reconciles out-of-band changes.
+- `coordinator.lua` persists jobs and reservations under `/cc-storage`.
+- `planner.lua` expands recipe dependencies, detects cycles, computes batches,
+  and emits operations in dependency order.
+- Crafting turtles register the `crafting_turtle` capability and execute one
+  assigned operation at a time through a staging chest.
+- All messages use the `cc-storage/v1` protocol, request IDs, and Rednet service
+  discovery (`main` by default).
+
+See [docs/AUTOCRAFTING.md](docs/AUTOCRAFTING.md) for job and recipe details.
+
+## Development and releases
+
+Run `python3 ci_pipeline/ci.py` before committing a release. It retains the
+legacy Contents-API file map for migrations and generates compact JSON bundles
+under `releases/`. Each installation needs a manifest request and one bundle
+request rather than one API request per file per computer.

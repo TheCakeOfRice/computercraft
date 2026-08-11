@@ -1,7 +1,7 @@
 local funcs = require("funcs")
 local gui = require("gui")
 
-rednet.open("back")
+peripheral.find("modem", rednet.open)
 
 -- init state variable
 local state = "home"
@@ -53,7 +53,7 @@ while true do
 
                 -- deposit was clicked
                 else
-                    local depositSuccess = funcs.depositLastRow()
+                    local depositSuccess = funcs.deposit()
                     if depositSuccess then
                         gui.drawSuccess()
                     elseif depositSuccess == nil then

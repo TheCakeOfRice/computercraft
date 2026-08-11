@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "channels": {
+    "stable": {
+      "version": "51d34b5cf2e2",
+      "roles": {
+        "APIServer": "https://raw.githubusercontent.com/TheCakeOfRice/computercraft/codex/storage-platform-refactor/releases/APIServer.json",
+        "MacGyver": "https://raw.githubusercontent.com/TheCakeOfRice/computercraft/codex/storage-platform-refactor/releases/MacGyver.json",
+        "PowerCPU": "https://raw.githubusercontent.com/TheCakeOfRice/computercraft/codex/storage-platform-refactor/releases/PowerCPU.json",
+        "StorageCPU": "https://raw.githubusercontent.com/TheCakeOfRice/computercraft/codex/storage-platform-refactor/releases/StorageCPU.json",
+        "iPad": "https://raw.githubusercontent.com/TheCakeOfRice/computercraft/codex/storage-platform-refactor/releases/iPad.json"
+      }
+    }
+  }
+}

@@ -1,50 +1,40 @@
-local vars = require("vars")
+local Monitor = {}
+Monitor.__index = Monitor
 
-local m = peripheral.wrap(vars.MONITOR)
-if m == nil then return false end
-
-local monitor = {}
-
-local function stringifyCount(count)
-    local str = ""
-    if count < 1000 then
-        str = tostring(count)
-    elseif count < 1000000 then
-        str = tostring(math.floor(count / 1000)) .. "k"
-    elseif count < 1000000000 then
-        str = tostring(math.floor(count / 1000000)) .. "m"
-    end
-    for i=1, 4 - #str do
-        str = str .. " "
-    end
-    return str
+function Monitor.new(name)
+    local wrapped = name and peripheral.wrap(name) or peripheral.find("monitor")
+    if not wrapped then return nil end
+    return setmetatable({ peripheral = wrapped }, Monitor)
 end
 
-function monitor.drawInv(inv)
-    local w, h = m.getSize()
-    m.clear()
-    if math.floor(w / 2) - 8 > 0 then
-        m.setCursorPos(math.floor(w / 2) - 8, 1)
-    else
-        m.setCursorPos(1, 1)
-    end
-    m.write("== INVENTORY ==")
-    for i, item in ipairs(inv) do
-        -- only write up to h lines
-        if i >= 1 and i < h then
-            -- make sure line is a string of length w or less
-            local line = stringifyCount(item.count) .. " / "
-            if #item.displayName < w - 7 - math.floor(w / 3) then
-                line = line .. item.displayName
-            else
-                line = line .. string.sub(item.displayName, 1, w - 7 - math.floor(w / 3))
-            end
-
-            -- write line to monitor at relative position
-            m.setCursorPos(math.floor(w / 3), i + 1)
-            m.write(line)
-        end
-    end
+local function count(value)
+    if value < 1000 then return tostring(value) end
+    if value < 1000000 then return tostring(math.floor(value / 1000)) .. "k" end
+    if value < 1000000000 then return tostring(math.floor(value / 1000000)) .. "m" end
+    return tostring(math.floor(value / 1000000000)) .. "b"
 end
 
-return monitor
+function Monitor:draw(items, status, jobs, workers)
+    local screen = self.peripheral
+    local width, height = screen.getSize()
+    screen.setBackgroundColor(colors.black)
+    screen.setTextColor(colors.white)
+    screen.clear()
+    screen.setCursorPos(1, 1)
+    screen.write(("CC Storage: %d/%d slots"):format(status.usedSlots, status.totalSlots))
+    local line = 2
+    for _, item in ipairs(items) do
+        if line > height - 1 then break end
+        screen.setCursorPos(1, line)
+        local text = count(item.available) .. " " .. item.displayName
+        screen.write(text:sub(1, width))
+        line = line + 1
+    end
+    local active, workerCount = 0, 0
+    for _, job in ipairs(jobs) do if job.state ~= "COMPLETE" and job.state ~= "CANCELLED" then active = active + 1 end end
+    for _ in pairs(workers) do workerCount = workerCount + 1 end
+    screen.setCursorPos(1, height)
+    screen.write(("Jobs:%d Workers:%d"):format(active, workerCount):sub(1, width))
+end
+
+return Monitor

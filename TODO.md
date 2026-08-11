@@ -1,15 +1,34 @@
-# Inventory scalability
-- Inventory function scales poorly with the amount of items stored
-- Could implement "cold storage" to reduce overhead for frequent refreshes
-- Integrate RS Bridge from Advanced Peripherals
+# Storage roadmap
 
-# Power (RF) Monitor Interface
-- I/O rate
-- Total RF banked
-- On/Off button
+## Inventory durability
 
-# Scalable pod of crafty turtles
-- Add a new CPU - CraftCPU which manages a network of crafty turtles (& machines)
-- Use export API and queueing to facilitate pushing items to the crafty turtles
-- Manage "busy" and "free" states (redstone lamps would be cool to see this visually)
-- List of craftable items could persist between servers
+- Add a reconciliation report which shows slot-level cache differences.
+- Persist the last known inventory snapshot for crash diagnostics.
+- Add configurable reconciliation groups for very large or cold storage.
+- Evaluate an RS Bridge adapter as an optional inventory backend.
+
+## Autocrafting
+
+- Add an in-game recipe editor and import more normalized recipes.
+- Model reusable tools, container items, byproducts, tags, and alternative recipes.
+- Add machine-worker capabilities for furnaces and modded processors.
+- Add explicit recovery actions for `WORKER_LOST` jobs.
+- Add worker heartbeats, stale-worker detection, and optional redstone status lamps.
+- Add staging-inventory assignment to the setup/configuration UI.
+
+## Client experience
+
+- Add craft, job progress, cancellation, and reprioritization screens to iPad.
+- Replace blocking text prompts with a consistent windowed UI.
+- Display actionable network and inventory errors instead of generic failure states.
+
+## Power monitoring
+
+- Track RF input/output rate and total stored RF.
+- Add controlled generator enable/disable actions.
+
+## Security and releases
+
+- Sign release manifests or add a checksum implementation available in CraftOS.
+- Add optional message authentication for untrusted multiplayer Rednet networks.
+- Publish immutable GitHub Release assets instead of branch-backed development bundles.
